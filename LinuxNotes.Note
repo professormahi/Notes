@@ -1,0 +1,1148 @@
+Linux Commands:
+	Notes :
+		1. The Linux is case sensitive
+		2. There is no space in file names in Linux
+		3. Symbolic Links : Files that when you ll have "->" in front of them
+		4. Wild cards :
+			* --> Matches any chars
+			? --> Matches any single char
+			[chars] :
+				[:alnum:] --> Alphanumeric
+				[:alpha:] --> Alphabetic
+				[:digit:] --> Numerals
+				[:upper:] --> Uppercase alphabetic
+				[:lower:] --> Lowercase alphabetic
+			[!chars] :
+				Not member of those up sets
+		5. For .gz use zless
+		6. With using '\' the commands can become multi line (Without space after it)
+	Shell :	
+		7. ps $$ 	--> See open shells
+		8. Regex (Regular expression)
+			e.g.
+				[Aa]	--> A or a
+				[a-z]	--> a to z
+		
+		Shortcuts :
+			CTRL + L --> Clear
+			CTRL + R --> Search history commands			
+		
+	
+	Navigation & Looking Around:
+		pwd :
+			Give the current directory
+		ls :
+			The list of files in the working directory
+				-a 			--> Show hiddens too. (Starting with ".")
+				-A 			--> Shows .'s And ..'s
+				-l 			--> In long listing format				
+				-l 			--> The long list of that dir
+				-la 		--> The long form of all files including hiddens
+				-r 			--> Reverse
+				-t			--> Sort by time, newest first
+				-h			--> Human readable, e.g. sizes
+				-C			--> List entries by columns
+				-F			--> Classify, append indicator (*/=>@|) to the entries
+				--color=	--> To classify by colors(e.g. --color=auto)
+				
+		cd : 
+			Change the directory 
+				e.g. cd /usr/
+				cd . 		 --> The Current dir
+				cd .. 		 --> The parent dir
+				cd <Nothing> --> Home dir
+				cd - 		 --> The previous dir
+		ll : 
+			The same as ls but more details (ls -alF)
+			
+		less :
+			View text files
+				Page up/Page down --> Scrolling
+				G 				  --> Go to the end
+				1G 				  --> Go to the beginning
+				/<chars> 		  --> Search the <chars>
+				n 				  --> Repeat the previous search
+				h       		  --> help
+				q 				  --> quit
+				
+		more :
+			To view text files (Same as less)
+			less is much more than more (CONFUSED)
+			more is older than less and less is better because read the gzs and binaries
+				
+		file :
+			Classify file's contents
+				Recognize : 
+					ASCII, Bash Script, GNU tar, gzip, JPEG, Post Script, RPM, Zip, etc.
+					
+		Famous Dirs :
+			/ :
+				The root dir
+			/boot : 
+				Boot loader ; The kernel files is called "vmlinuz"
+			/etc :
+				Config Files
+				Sub files & dirs :
+					/etc/passwd :
+						Essential info for each user
+						format:
+							e.g. daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+								    1   2 3 4   5        6         7
+								1. UserName
+								2. x means that pass stored in etc/shadow file
+								3. User ID (UID)  --> 0 for 'root'
+								4. Group ID (GID) stored in /etc/group file
+								5. User ID info   --> Extera infos about the user							
+								6. Home dir for user
+								7. Command/Shell
+					/etc/shadow :
+						Some where to keep the passes
+						format:					
+							e.g. root:!:16233:0:99999:7: : :			
+								  1   2   3   4   5   6 7 8
+							     1. UserName (Login name)
+							     2. The encrypted password
+							     3. Last time pass changed since Jan 1, 1970 in days
+							     4. Minimum days to allow the user to change the pass word
+							     5. Maximum days that a password is valid
+							     6. The number of days before password is to expire that user is warned him/her
+							     7. The number of days after expiring that the account in disabled
+							   	 8. Time since Jan 1, 1970 that account is expired
+					/etc/group :
+						Some where to keep groups informations
+						format :
+							e.g. root:x:0:
+								   1  2 3 4
+								 1. Group name
+								 2. Password (if x has pass) --> Generally not used
+								 3. GID (Group ID)								 
+								 4. Group List   			 --> List of members
+					/etc/gshadow :
+						Same as shadow but for groups
+					/etc/fstab :
+						Mounted Devices
+					/etc/hosts :
+						Net host names & IP addresses
+					/etc/init.d : <Dir>
+						Various systems.
+					/etc/shells :
+						All Shells in the Linux	
+					/etc/profile : 
+						The system wide initialization file, executed for login shells
+					/etc/bash.bashrc :
+						Is not standard, the system wide per-interactive-shell startup
+					/etc/bash.logout :
+						Bash closing clean up
+					
+			/bin & /usr/bin :
+				Programs
+			/sbin & /usr/sbin :
+				Programs for system admins
+			/usr :
+				Sub dirs :
+					/usr/share/X11 :
+						Support the X window system (e.g. rgb.txt)
+					/usr/share/dict :
+						Dictionaries for spell checking
+					/usr/share/doc :
+						Documentations
+					/usr/share/man :
+						Man packs(man command)
+					/usr/src:
+						Source code files
+			/usr/local :
+				
+			/var :
+				Files that changes during system's running
+				/var/log : 
+					Log files
+				/var/spool :
+					Hold files that are queued for process
+			/lib : 
+				The shared libraries (such as dlls)
+			/home :
+				The users home dir (SMILE) , the only place that a user can write file in
+			/root :
+				The root user home (SMILE)
+			/tmp :
+				For programs temp files
+			/dev :
+				Where devices are in
+				/dev/sda*:
+					The Hard
+				/dev/video*:
+					Web cams
+				/dev/null:
+					A Special file to send unwanted output, will be discarded
+				/dev/urandom :
+					Random number generating form the kernel space
+			/proc :
+				Virtual dir that correspond to all running processes
+					e.g. /proc/cpuinfo
+			/media & /mnt :
+				Use for mount points
+			~/ :
+				.bashrc :
+					User bash settings
+				.bash_profile ;
+					The Personal initialization file
+				.bash_logout :
+					Clear sth when the bash exits
+				.inputrc :
+					Individual readline initialization file
+				
+	du :
+		Summarize disk usage of each file
+		-s --> Summarize, Display only total for each argument
+		-a --> Count for all files not dirs
+		-h --> Human readable
+			
+	ln Command :
+		Making a symbolic link 
+		ln -T target <link name>
+		ln -s target <link name>	--> Make symbolic link not hard one
+		
+		
+	find :
+		Search for files in a directory
+		-type type 		--> Find types (f, b, c, d, l, p)
+		-print 			--> Print the out put
+		-iname name		--> Sth that is like name
+		-name name		--> Base of file name is name
+		-P				--> Never follow symbolic links
+		-L				--> Follow symbolic links
+		-amin n			--> File accessed last n mins
+		-anewer file	--> File was last accessed more recently than file
+		-atime n		--> File was last accessed n*24 hours ago
+		-cmin n			--> File's status was changed last n mins
+		-empty			--> File that is empty and regular file
+		-executable		--> Files that are executable
+		-gid n			--> Files that are owned by nth gid
+		-group gname	--> Files that are owned by gname group
+		-size n			--> Size limit
+		-uid n			--> Files that are owned by nth uid
+		-user uname		--> Files that are owned by uname user
+		 
+						
+	wc : 
+		Print newline, word, count, and byte count for each file
+		-l --> Line count
+		-c --> Byte count
+		-w --> Word count
+		
+	lpr : 
+		Print Files
+		
+	printenv :
+		List of the environment parameters
+		
+	Environment variables :
+		host name	--> Show the host name
+		domain name	--> Show the domain name
+		
+	set : 
+		Complete list of environment (more than printenv)
+		Understanding the shell variables
+		
+	export :
+		Use to export a variable to a executable program
+		Values to set a export :
+			VAR
+			PATH
+			EDITOR
+			PS1
+			.
+			.
+			.
+		
+	Manipulating files or dirs:
+		cp :
+			Copy file or dirs 
+				cp <file1> <file2> 		--> If file2 exists it'll be overwritten silently
+				cp -i <file1> <file2> 	--> If file2 exists it'll be overwritten after users permission
+				cp <file1> <dir> 		--> Copy file to the dir with it own name
+				cp -R <dir1> <dir2> 	--> Copy Contents of dir1 in dir2
+		mv :
+			Move files or dirs 
+				mv <file1> <file2> 		--> If file2 exists it'll be overwritten silently else the file1 will rename to file2
+				mv -i <file1> <file2> 	--> If file2 exists it'll be overwritten after users permission
+				mv <file1><file2> <dir> --> Move files , can be more, to the dir and if the dir dosen't exists error
+				mv <dir1> <dir2> 		--> If dir2 exists it'll be overwritten silently else the dir1 will rename to dir2
+				
+		rm :
+			Remove files or dirs
+				-i <file1> <file2> 	--> Needs user permission before each delete
+				-r <dir1> <dir2> 	--> Remove dirs and all of their contents
+				-f					--> Force remove
+				
+		mkdir :
+			Make dir
+
+		touch :
+			Make an empty file
+			touch fileName				--> Make an empty file (like >fileName)
+			
+		Compressing :
+			tar:
+				-c		--> Create a tar
+				-f file	--> Where is the file
+				-C dir	--> Unarchived in the dir
+				
+		scp :
+			Secure copy, Remote copy
+			
+		patch :
+			Apply a diff file to an original one
+			patch [options] [original] [patch]
+	
+	Working with commands :
+		Command types:
+			1- Aliases
+				e.g. ls
+			2- Key Words
+				e.g. if
+			3- Functions
+				User defined
+			4- Built ins
+				e.g. pwd
+			5- Files
+				e.g. /bin/date
+		
+		type :
+			Print the command types
+				using : type <command>
+			-p --> Just address
+			-a --> Full type result
+			
+				
+		which :
+			To determine the exact location of the given exe
+				using : which <command>
+		
+		help :
+			Give help for a command 
+			
+			help 				--> Help for bash
+			help <command> 		--> Help for Command
+			help -m <command> 	--> Help for Command (Re formated)
+			
+			Note :
+				If you see a [] in the help it means that you can use | in that for have both conditions
+					e.g. cd [-L|-P] dir
+			--help :
+			Show the help
+				usage : <command> --help
+				
+		man :
+			Give manual  page
+			
+			man <program>
+			
+		info : 
+			Give information about program
+			info <program>
+			
+			
+		
+	I/O redirection:
+		read command:
+			Reads a line from standard input
+			read [options] varName
+				e.g. read var
+			-e			--> The standard input comes form a terminal
+			-r			--> In this case '\' dosen't mean the escape char
+			-s 			--> If input is from terminal it didn't echo
+			-t timeout 	--> To set time out	
+			-p prompt	--> Display the prompt before reading the line
+			-u fd		--> To read from fd
+			
+		Standard output:
+			> 	--> Out to file (e.g. command > file)
+			>> 	--> Append to file
+			
+		Standard input:
+			< 	--> Input from file (e.g. command < file)
+			<<	--> 
+			<<- --> Ignore tabs not spaces
+		
+		Pipelines :
+			Is "|"
+			Some usage :
+				Command | less :
+					e.g. ls -l | less
+					Use out put with less
+					
+				command | head :
+					e.g. ls -lt | head
+					Output the first part of file
+					
+				command | sort [options] :
+					e.g. du | sort -nr
+					Sort the out put
+		Some numbers :
+			0 --> Input
+			1 --> Output
+			2 --> Error
+				Command 2> errorLogger
+			& --> Both input and output (Equivalent to 2>&1)
+				Command &> somewhere
+			Without numbers (command > somewhere):
+				It means the output
+			fd --> Each number other than 0, 1, and 2(file descriptor)
+				To define :
+					exec 3> Somewhere(for input change > to <, and for both exec fd<> Somewhere)
+						# Some commands and send the result to it
+					# format : command >&3
+					exec 3<&-
+				To show your fd you can ls /proc/$pid/fd:
+					$pid is your pid
+	
+	Filters :
+		sort :
+			Sort contents of a file
+			-n 		--> numeric sort
+			-r 		--> reverse	
+			-k KEY	--> Will sort via key, It'll shows the location and type
+			-b 		--> Ignore leading blanks
+			
+			
+		
+		uniq :
+			Uniq sort (Remove the repetitive)
+			
+		grep :
+			Find pattern of chars in the input
+			-i	--> Ignore case
+			-c 	--> Give the count instead of all
+			-o 	--> Only matching
+			-P	--> Using Perl Regex
+			-v	--> Invert the result
+			-q	--> Silent, Don't show the output
+				The same as grep sth|wc -l
+				
+		cut :
+			Remove sections from each line or file
+			-d			--> Use DELIM instead of tabs
+			-c=chars	--> Select only this chars
+			
+				
+		tr :
+			Translate or delete characters
+			change the chars e.g. make them lowercase
+			Note :
+				You can use Wild Cards e.g. [:lower:]
+			tr [Options] SET1 [SET2]
+			Options:
+				-d		--> Delelte characters in SET1, do not translate
+				-c 		--> Complement
+			Examples :
+				tr '[:upper:]' '[:lower:]'
+			
+		
+		fmt :
+			return the formated text of the input
+			
+		pr : 
+			Split the input into pages 
+			
+		head : 
+			Out put the first part of the input
+			-n Count --> Output the first count lines
+			-c c	 --> Output the first k bytes
+		
+		tail : 
+			Out put the last part of the input 
+			-c bytes	--> Output the last byte bytes
+			-n K		--> Output the last K lines
+			
+			
+		tr :
+			Translate chars
+		
+		sed :
+			Stream editor
+			
+		awk :
+			A programing lang for constructing filters
+			
+		column :
+			To reformat the list as columned
+			-t 	--> Determine the input and make it table
+			-x	--> Fill columns before rows
+		
+		paste :
+			Merge line of files
+			-d	--> Set delimiters			
+			-s	--> 
+		
+		tac :
+			Reverse the input
+			-r 			--> Set regex
+			-s separator	--> Set the separator
+			
+	Expansion :
+		printf :
+			Format & print a text like c++
+			
+		echo :
+			Print a text
+			echo <text> 			--> Print that text
+			echo * 					--> Semi ls (Because the * performs sooner) 
+			echo ~<sth> 			--> Find files that ends with <sth>
+			echo $((expression))	--> Print the expression res
+				*, +, -, **, etc
+			echo {,,,,...,} (Brace) --> Print all members of the set
+			echo $parameter 		--> Print the value of the parameter
+			echo "expression" 		--> Do that expression then echo the Result
+				*Note : If you wanna use "$" in your text use "\$" instead and the same for &, !, ", \, so on (SMILE)
+				
+			echo 'expression' 		--> Just print the expression like a string
+			echo -e <text> 			--> Enable using of back slash escapes
+				e.g. \\, \a, \t, \n, \f, etc
+			echo -n 				--> Don't out put the trailing new line (Don't leave the current line)
+				
+				
+	permissions :
+		ls permissions Result:
+			-rwxrwxrwx : (owner, group, other)
+				The only  - --> "-" For file and "d" for dirs
+				First 	rwx	--> Read, write, and execute for the file owner
+				Second 	rwx	--> Read, write, and execute for the group owner of file
+				Third 	rwx --> Read, write, and execute for all users
+				
+		chmod :
+			Change the permissions
+			In octal :
+				rwx --> 7
+				rw- --> 6
+				r-x --> 5
+				r-- --> 4
+				--- --> 0				
+			=	--> Override the permission
+			+	--> Add a permission
+			- 	--> Remove a permission			
+			u	--> Users
+			g	--> Groups
+			o	--> Others				
+			x  	--> Execute permission
+			r	--> Read permission
+			w  	--> Write permission						
+			x for dirs :
+				Allow to be entered (SMILE)
+			
+		su :
+			Make the current user super user
+			The $ becomes #
+			
+		sudo :
+			Save your pass for the current command
+			sudo <command>
+			
+			
+		chown :
+			Change the owner
+			chown <the new owner> file --> Change the owner to the new owner
+			You must have permission to do this (must be super user)
+			
+		chgrp :
+			Change the group owner
+			chgrp <new group> file --> Change the owner group to the new one
+			
+		access :
+			Check real user permission for file
+			
+	xload :
+		System load average display for X		
+			
+	Environment :
+		Login Shells:
+			/etc/profile/  	--> Global config for all users
+			~/.bash_profile	-->	User's personal startup file
+			~/.bash_login	-->	If the ~/.bash_profile not found
+			~/.profile		-->	If neither of the two above not found, This is default in Debian-bases
+		
+		Non-login Shells :
+			/etc/bash.bashrc 	--> Global config for all
+			~./bashrc			--> User's personal startup file
+			
+			
+	alias :
+		Mixture of some commands that create new command 
+			
+		alias name=value
+		alias : 
+			Show the alias'
+			
+	date :
+		Print or set system date and time
+		-d --> Date
+		-s --> Set
+		-u --> UTC, Universal
+		Format Controls of output :
+			01. %% --> A literal
+			02. %a --> Weekday name in short (e.g. Sun)
+			03. %A --> Weekday name in long (e.g. Sunday)
+			04. %b --> Month name in short (%h)
+			05. %B --> Month name in long
+			06. %c --> Date & time in full
+			07. %C --> 
+			08. %d --> Day of month
+			09. %D --> Date (%m/%d/%y)
+			10. %e --> Day of month, space padded (%_d)
+			11. %F --> Full date (%Y-%m-%d)
+			12. %g --> Last to digits of year
+			13. %H --> Hour (00..23)
+			14. %I --> Hour (01..12)
+			15. %j --> Day of year (001..366)
+			16. %k --> Hour, space padded (%_H)
+			17. %l --> Hour, space padded (%_I)
+			18. %m --> Month (01..12)
+			19. %M --> Minute (00..59)
+			20. %n --> New line
+			21. %N --> Nano seconds
+			22. %r --> Local time, 12-hour
+			23. %R --> Local time, 24-hour
+			24. %s --> Seconds since 1970-01-01 00:00:00 UTC
+			25. %t --> Tab
+			26. %u --> Day of Week (1..7); 1 is Monday
+			27. %w --> Day of Week (0..6); 0 is Sunday			
+
+	bc :
+		An arbitrary precision calculator language
+		
+		
+	Shell Scripts :
+		Is a file containing a series of commands
+			
+		Notes :
+			1. $PATH --> Where exe files kept
+				To add directory to PATH --> export PATH = $PATH:directory
+			2. You can edit .bash_profile or .profile to include above command
+			3. 
+			
+			
+		First steps :	
+			1. Write
+			2. Give permission to execute --> It's necessary for the execution
+			3. Put it some where shell can find
+			
+		Programs to write the scripts : (Text editors (SMILE))
+			1. vi/vim 
+			2. Emac 	--> By Richard Stallman
+			3. nano 	--> Easy to use but less features
+			4. gedit 	--> Graphical, For Gnome desktop
+			5. kwrite 	--> Graphical, Advanced, For KDE
+			
+		Shell functions :
+			To have some functions in the shell
+			name(args){
+				# Script goes here
+			}
+			function name{
+				# Script goes here
+			}
+			Note :
+				To return a value you must use echo
+			
+		Commands input :
+			Command << token
+				# Sth to pass the command
+			token		
+			
+		Variables :
+			Part of memory that store some values
+			name=value (No space)
+			$name --> The value of name
+			Selecting name roles:
+				1. Must start with letter or "_"
+				2. Must not contain space ("_" instead),But I'll use camel case role (SMILE) 
+				3. Can't use punctuation marks
+			You can use `Command` instead of $(Command)
+			Constants :
+				Mentioned with all letters uppercase (e.g. RIGHT_NOW)
+			declare command :
+				Can declare a variable by declare command
+				-a	--> Arrays
+				-f	--> Functions
+				-i	--> Integer
+				-r	--> Make names read-only
+				
+				Show all declared variables with; declare [option] | less
+			
+			undeclare commands :
+				unset :
+					e.g. unset -f function
+			local variables :
+				local name
+				
+		
+		Exit status :
+			Is the program run successfully or not
+			0 --> Successful
+			1 --> Unsuccessful
+			
+				e.g. command
+				echo $? --> 0..255 (Give the exit status)
+		
+		: command :
+			No work just return 0 means true		
+		
+		test :	
+			Examine the command 
+			test expression / [expression] : Are the same
+			Some famous expressions :
+				01. -d file 		--> If a file is dir
+				02. -e file 		--> If a file exists
+				03. -f file 		--> If a file exists and is regular file
+				04. -L file 		--> If file is a symbolic link
+				05. -r file 		--> If file is readable for you
+				06. -w file 		--> If file is writable for you 
+				07. -x file 		--> If a file is executable for you
+				08.	-b file			--> True if is a blocked file
+				09.	-a file 		--> True if file exists
+				10. file1 -nt file2 --> If file1 is newer than file2
+				11. file1 -ot file2 --> If file1 is older than file2
+				12. -z string		--> If string is empty
+				13. -n string 		--> If string is not empty
+				14. str1 = str2		--> If two string are equal
+				15. str1 != str2 	--> If two string are not equal
+				16. num1 -lt num2	--> If num1 less than num2
+				17. num1 -le num2	--> If num1 less than or equal num2
+				18. num1 -gt num2	--> If num1 greater than num2
+				19. num1 -ge num2	--> If num1 greater than or equal num2
+				20. num1 -eq num2 	--> If tow numbers are equal
+				21. num1 -ne num2 	--> If tow numbers are not equal
+				22. -v varname		--> True if shell variable varname is set
+				23. &&				--> Logical And
+				24. ||				--> Logical Or						
+			
+		Positional parameters :
+			Sth like argc in C++
+			They are $0..$9..${n}..${255}
+			$# 		--> Count of the args
+			shift 	--> Will shift the parameters (e.g. $2 to $1)
+			$@ 		--> List of command line args (Or $*)
+			$-		--> Hold flags supplied to shell
+			$!		--> Hold the process number of last background command
+			$$		--> Hold the process number of the current shell			
+			
+			
+		Flow control :
+			if :
+				if conditions ; then
+					commands
+				[elif conditions; then
+					commands...]
+				[else 
+					commands...]
+				fi
+			
+			case :
+				case variable in 
+					first ) 
+						;;
+					second )
+						;;
+					.
+					.
+					.
+					* )
+				esac
+				* ) --> Runs if no one other runs (SMILE)
+				
+			while :
+				while [Condition]; do
+					#Sth
+				done
+				
+			until :
+				Do sth until the Condition is wrong
+				
+				until [Condition]; do
+					#Sth
+				done
+				
+			for :
+				For loop
+				
+				To shape:
+					for var in collection; do
+						#Sth
+					done
+					
+					for (( ; ; ; )); do
+						#Sth
+					done
+			select :
+				PS3 --> The comment to show before the select
+				select varName in list; do
+					#Sth
+				done				
+				Note :
+					You can mix the select and the case
+			break command :
+				break 		--> Comes out of the current loop				
+				break N		--> Comes out of N current loop
+				
+			continue command :
+				continue	--> Resume the next iteration 
+				continue N	-->
+				
+		Roles :
+			1. # <Some texts> 	--> Is comment
+				Or multi line comments :
+					<<Comment Name
+						# Your comments
+					Comment Name
+			2. #! /bin/bash    	--> Shebang; to indicate what program used to interpret the script (Is necessary)
+				NOTE : You can use /usr/bin/Perl, /usr/bin/python, /usr/local/bin/sbcl --script, /bin/sh (For boot scripts), etc in shebang too.
+				
+				Add -x to show what is donning
+				set :
+					set -x --> To turn tracing on
+					set +x --> To turn tracing off 
+					set -v --> Display shell input lines as they are read
+					set -n --> Read commands but don't execute them
+					set -o --> Set variable options
+						e.g. set -o ignoreeof (Turn the CTRL + D off)
+					set +o --> Unset variable options
+					
+				shopt :
+					-s optionName 	--> To set each option
+						shopt -s cdspell (turn on the cd spell cheeking)
+						shopt -s nocasematch (turn on the no case math option)
+					+s optionName 	--> To unset each option
+					-q			  	-->
+					-u 				--> To turn off options		
+			3. ;				--> Is Command separator
+			
+		Error handling :
+			trap :
+				Do the arg when one of signals happened
+				trap arg signal
+				trap command signal
+					e.g. trap 'echo "Signal detected"' 0
+				trap -l arg signalNums
+				trap - signal 	--> Clear the trap on that signal
+
+			journalctl :
+				System logs
+
+		Shell editors :
+			vi / vim :
+				Shortcuts :
+					ESC 			--> Go to the command mode
+					ESC then I 		--> Go to edit mode
+					:w				--> Write out/Save
+					:q				--> Exit
+					:q!				--> Exit without saving
+					:wq
+					:x				--> Save & exit
+					:<line num> 	--> Jump to the line num
+					/WordToSearch	--> Search that word
+					g				--> Go to the start of file
+					shift + g		--> Go to the end
+					
+		Run a Script :
+			Change the permission and ./script	--> 
+			Use .							--> A virtual shell, The variables remain
+			Use source command				--> Run on the existing shell and variables and data remains
+			Use bash command				--> Use bash to execute
+			Use exec command				--> Avoid use of sub-shell
+			
+			Note :
+				1. Running the script make a sub-shell, To avoid sub-shell making use exec command
+				
+				 
+			
+		Run multiple programs in a line using logical and, or :
+			Using &&, ||:
+				&&		--> Logical And (Run second if and only if first returns zero)
+					[ condition ] && true-command
+				||		--> Logical Or (Run second if and only if first returns non zero)
+					[ condition ] || false-command									
+	
+	Programing Tools :	
+		python :
+			Python interactive environment
+		gdb :
+			GNU debugger
+			For python :
+				interactive environment:
+					gdb python
+						run <program>.py Args
+				Automatic :
+					gdb -ex r --args python <program>.py Args
+			
+			-ex 		--> Execute given GDB command
+			--args 		--> Give Args
+			
+			Internal commands :
+				bt				--> Giving the C Stack
+				Py-bt			--> Giving the Python Stack
+				info threads	--> Gives the threads infos
+				py-list 		--> Where is this python code	
+				
+		watch :
+			Execute a program periodically
+			-n seconds	--> Set the interval
+			-b			--> Beep if the program has non zero result
+			
+					
+				
+	Over the network :
+		ssh : 
+			ssh protocol to have shell 
+			-i identitiyfile	--> Sets the identity file to accesses the shell
+			
+	System Info :			
+		uptime :
+			Show the uptime of the system			
+	
+		id :
+			Give the Current User
+			-u --> Print only the effective user ID (If Equal zero is super user)
+			
+		uname :
+			Print system info
+			-o --> Operating system
+			-r --> Kernel release
+			-p --> Processor
+			-a --> All
+			
+		who :
+			Show who has logged on
+									
+	System administration & Monitoring:
+		Job control : (Process Control)
+			Notes :
+				1. Put a program on background --> program &			
+				2. Process States:
+					D(uninterpretable sleep)--> Process is sleeping and can't bring back until an event such as I/O occurred
+					R(running)				--> Process is running or executing
+					S(sleeping)				--> Process is not running and is waiting for event or a signal
+					T(traced or stopped)	--> Process is stopped by signals; such as SIGINT or SIGSTOP
+					Z(zombie or defunct)	--> Process that are dead but their parent didn't destroy them properly
+						Will be destroyed by init command
+				3.
+			
+			jobs :
+				Show the background processes
+				
+			pstree :
+				Show ps as a tree
+			
+			ps :
+				Show the background processes in more details (than jobs)
+				-p      	--> By Process ID
+				-a			--> All Processes
+				-u userlist	--> Select by real user id
+				-f			--> Full format listing
+				-e			--> Select all processes
+				-C cmdlist	--> Select by command name
+				-o format	--> Customize the format
+					e.g. -o pid=,cmd
+				-l 			--> Show in long format 
+				
+			pgrep :
+				Look for the processes (grep in processes)
+				-u			--> User
+										 			
+			kill :
+				Killing a process
+				kill %n 			--> Kill the nth program
+				kill ID 			--> Kill process by PID
+				kill -l 			--> The variety of signals to process
+				kill -SIGNAL PID 	--> Kill the process with that signal
+				
+					Some signals:
+						0. #0	Success	--> Program exit with no error
+						1. #1 	SIGHUP 	--> Hangup signal; Send to process running in terminal when you close the terminal
+						02. #2 	SIGINT 	--> Interrupt signal; When ctrl+c is pressed
+						03. #15 SIGTERM --> Termination signal; The default kill signal if no signal specified
+						04. #9 	SIGKILL --> Kill signal; Immediate termination of program by kernel, Program can't listen
+						05. #19	SIGSTOP	--> Stop process
+						06. #18 SIGCONT	--> Continue process if stopped		
+						07. #3	SIGQUIT	--> Quit from keyboard
+						08. #4	SIGILL	--> Terminate the process and dump the core
+						09. #6	SIGABRT	--> Abort signal
+						10. #8	SIGFBE	--> Floating point exception
+						11. #20	SIGSTP	--> Stop type at tty(CTRL + Z)						
+				
+			killall :
+				Kill process by name
+					e.g. killall processName
+				-s signal	--> Send the Signal to the program
+			
+			pkill :
+				Kill by name, user, group, etc
+				-u user --> Kill by user
+				-KILL	--> Kill
+				-HUP	--> Make process reread it's config file
+			
+			bg :
+				Resume the background processes
+				bg num	--> Restart the program with num pid
+				
+			fg :
+				Place job in foreground
+			
+			Console management :
+				tty :
+					Print the file name of the terminal connected to standard input
+					Exit status :
+						0	--> Is terminal
+						1	--> Is not terminal
+						2	--> Given incorrect args
+						3	--> If write error occurs						
+						
+				reset :
+					terminal initialization
+				tput :
+					Initialize a terminal or query terminfo database.
+					cols 	--> Get width
+					lines	--> Get height
+					cup x y	--> Move the cursor to x, y
+					
+				setleds :
+					Set keyboard leds
+					+/- num
+					+/- caps
+					+/- scroll					
+					-D			--> Change both the VT flags and their default settings
+					
+				setterm :
+					Set terminal attributes
+				
+		df :
+			Show system disk usage
+			-l 	--> Show the list
+			-H	--> Show the list of disk usage
+		
+		fdisk :
+			-l	--> Give the list of all disks
+	
+		free :
+			Display the amount of free and used memory in system
+			-m 	--> In mega
+			-k	--> In kilo
+			-b	--> In byte	
+		
+		w :
+			Show who is logged on and what they do
+			
+		netstat :
+			Print network connections
+			-i	--> Show all interfaces
+			
+		nc :
+			Net cat command
+			
+		top :	
+			Show CPU Usage			
+			
+		vmstat :
+			
+		lsof :
+			List of open files
+			
+		tcpdump :
+			Show dump traffic on network
+			-i interface	--> Connect to the interface
+			
+		tcpflow :
+		
+		htop :
+			You must install ittech podcasts apk
+			
+		iotop :
+			For disk usage
+			
+		iostat :
+			
+		iptraf :
+			IP LAN net monitoring
+			
+		iftop :
+			Net send and receive status
+	
+	KDE / GTK+ GUI Dialog :
+		zenity :
+			--calendar			--> Show the calendar
+			--info				--> Make info dialog
+			--error				--> Make error dialog	
+			--question			--> Make question dialog
+			--title				--> Set title
+			--text				--> Set text
+			--window-icon  icon	--> Set window icon
+			--width
+			--height
+			--timeout t			--> Set timeout
+			
+			
+		KDialog :
+			Like zenity but for KDE
+
+	Other useful commands :
+		convert :
+			Convert Images
+			e.g. :	
+				convert sth.jpg -size 128x128 sthElse.jpg
+				convert sth.jpg SthElse.png
+			-resize	geometry 	--> Resize to geometry
+			-size geometry		--> Set the size	
+			-separate			--> Separate the picture channels	
+		feh :
+			An image viewer
+			-z					--> Auto zoom
+			-x 					--> Border-less
+			-d					--> Draw the file name at the top left
+			-F					--> Make the window full screen
+			-g [w x h]	[+x +y]	--> Set geometry
+			-B style			--> Set background for transparent images
+			-N 					--> Don't show any menu, No menus
+			-z					--> Randomize when viewing multiple files
+			-n					--> Reverse the sort order
+			-V					--> Verbose
+			--zoom %|max|fill	--> Zoom
+			
+		mail command :
+			Send and receive mail 
+			-s subject			--> Modify the subject
+			-a attachment		--> Modify the attachment
+			-c cc-address		--> Modify the cc-address
+			-b bcc-address		--> Modify the bcc-address
+			
+			Examples :
+				mail -s "Sth" Someone@Somewhere.SomewhereElse "Hello Mail!(WINK)"
+		
+		bash :
+			-C command 	--> Run the command at the sub-shell and output the result
+			
+		at :
+			Do the given job at a time
+			e.g. echo "echo 'Hello'" | at sometime
+			
+		xargs :
+			Build and execute command line from standard input
+			-a file	--> Read from file instead of standard input
+		
+		dialog :
+			--gauge text height width		--> Display that text
+			--title name					--> Specify the title
+			--fselect						--> File selection box
+			--stdout						--> Send the result to stdout
+			--form text h w formh [items]	--> Form layout
+			--msgbox						--> Show a message box
+			--backtitle						--> Setting a back title(On the background)
+			--begin x y						--> Where to begin the dialog
+			--calendar
+			--checklist
+			--create-rc						--> Create config file
+			--yesno							--> Make YesNo dialog
+				0	--> Yes
+				1	--> No
+				255	--> Escape key
+			--inputbox						--> Have an input box
+			--passwordbox					--> Password box
+			--insecure						--> Show * instead of passwd chars
