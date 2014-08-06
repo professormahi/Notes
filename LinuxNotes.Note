@@ -178,7 +178,9 @@ Linux Commands:
 					Random number generating form the kernel space
 			/proc :
 				Virtual dir that correspond to all running processes
-					e.g. /proc/cpuinfo
+					/proc/cpuinfo				--> CPU infos
+					/proc/sys/kernel/pid_max	--> Maximum value of pid
+					
 			/media & /mnt :
 				Use for mount points
 			~/ :
@@ -311,9 +313,7 @@ Linux Commands:
 		type :
 			Print the command types
 				using : type <command>
-			-p --> Just address
-			-a --> Full type result
-			
+			-p --> Just address			
 				
 		which :
 			To determine the exact location of the given exe
@@ -334,9 +334,18 @@ Linux Commands:
 				usage : <command> --help
 				
 		man :
-			Give manual  page
-			
+			Give manual page							
 			man <program>
+			man number <program>	--> Give the manual in section number
+				1. General Commands
+				2. System calls
+				3. C library functions
+				4. Special files(usually devices, those found in /dev) and drivers
+				5. File format and conventions
+				6. Games and screen-savers
+				7. Miscellanea(undocumented)
+	 			8. System administration commands daemons(use only for root)
+	 			9. Kernel routines[Non standard]
 			
 		info : 
 			Give information about program
@@ -502,7 +511,7 @@ Linux Commands:
 			echo -n 				--> Don't out put the trailing new line (Don't leave the current line)
 				
 				
-	permissions :
+	Account management :
 		ls permissions Result:
 			-rwxrwxrwx : (owner, group, other)
 				The only  - --> "-" For file and "d" for dirs
@@ -550,6 +559,21 @@ Linux Commands:
 			
 		access :
 			Check real user permission for file
+	
+		chage :
+			Change user password expiry informations
+			-E theDate 	--> Change expire date to theDate
+			-I n		--> Set the number of inactivation after expiring
+			-M m		--> Maximum number of days to expire
+			-m m		--> Minimum number of days to expire
+			-W n		--> Time to warn
+			
+		passwd :
+			Change password informations
+			-l			--> Lock the user
+			-u			--> Unlock the user
+			-S			--> Show the status of users
+			-a			--> Only can use with -S, means list all
 			
 	xload :
 		System load average display for X		
@@ -987,6 +1011,18 @@ Linux Commands:
 			fg :
 				Place job in foreground
 			
+			fork :	
+				Create a new process by duplicating the calling process
+				
+			exec :
+				Replace the current process image with a new process image
+			
+			clone :
+				Create a new process, in manner similar to fork
+			
+			exit :
+				Cause normal process termination
+		
 			Console management :
 				tty :
 					Print the file name of the terminal connected to standard input
