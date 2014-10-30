@@ -1,0 +1,74 @@
+Links :
+	http://www.tecmint.com/rsync-local-remote-file-synchronization-commands/
+	
+
+RSync:
+	Over view :
+		In daemon mode listenning on TCP Port 873
+		Andrew Tridgell and Paul Mackerras wrote the original rsync.
+		
+	Usage :
+		To copy filse over net (SURPRISED!)
+		
+	Syntacx :
+		rsync [OPTION] … SRC [SRC] … [USER@]HOST:DEST
+		rsync [OPTION] … [USER@]HOST:SRC [DEST]
+		
+	Options :
+		-r 						--> Recursive
+		-b 						--> Backup
+		-u 						--> Update (--inplace, --append)
+		-d 						--> Transfering dirs without recursive
+		-l 						--> Copy symbolics as symbolics
+		-p 						--> Preserve permissions 
+		-E 						--> Preserve Executability
+		-o 						--> Preserve OwenrShip
+		-g 						--> Preserve Groups
+		-t 						--> Preserve modifition time
+		-z 						--> Compress
+		-v 						--> Increase verbosity
+		-a 						--> Archive mode
+		-H 						--> Preserve hard links 
+		-e						--> To run shell command on the remote server
+		-e <protocol> 			--> Over that protocol (e.g. ssh)
+		-h 						--> Human readable
+		-P						--> Show the progress during the progress (SMILE), Same as --progress
+		--safe-link 			--> Ignore symbolic links that point out of the tree
+		--existing 				--> Ignore creating new files		
+		--ignore-existing 		--> Ignore updating existing files
+		--remove-source-files 	--> Sender remove synced files
+		--progress				--> Show the progress during the progress (SMILE)
+		--log-file=FILE			--> Sending logs will be stored to FILE
+		--include=PATTERN		--> Sync files that have PATTERN filter in themselves
+		--exclude=PATTERN		-->	Don't sync files that have PATTERN filter in themselves
+		--max-size='SomeK'		--> Only send or recieve files less than SomeK
+		
+		
+	Exit status' :
+		1.  0 --> Successed
+		2.  3 --> Errors selecting input/output files
+		3.  5 --> Error in client-server protocol
+		4. 10 --> Error in socket I/O
+		5. 11 --> Error in file I/O
+		6. 30 --> Time out in data send/recieve
+		
+	Samples :
+		rsync -t [Pattern (e.g. *.c)] [PurposeMachine]:Path
+			Send all file with that pattern in the current dir to purpose machine in the path (if exist only send differences)
+			e.g. rsync -t *.c foo:/src
+		
+		rsync -avz [Machine]:Path/dir PathHere :	
+			Download all files recursivly that are in the dir directory to the PathHere/dir 
+			File transfering is archive mode that means Symbolic links, devices, attributes, permissons, ownerships, etc are preseved
+			e.g. rsync -avz foo:src/bar /data/tmp
+			
+		rsync -avz [Machine]:Path/dir/ PathHere :
+			Download all files recursivly that are in the dir directory to the PathHere/ 
+			File transfering is archive mode that means Symbolic links, devices, attributes, permissons, ownerships, etc are preseved
+			e.g. rsync -avz foo:src/bar/ /data/tmp
+			
+		rsync -av NowHere/dir[/] /Dest :
+			
+			
+		rsync -av [host]:: /Dest: [OR rsync -av [host]::moudle /Dest]
+			All files in remote dir will be transfered				
