@@ -22,6 +22,7 @@ Linux Commands:
 			e.g.
 				[Aa]	--> A or a
 				[a-z]	--> a to z
+				
 		
 		Shortcuts :
 			CTRL + L --> Clear
@@ -29,9 +30,9 @@ Linux Commands:
 		
 	
 	Navigation & Looking Around:
-		pwd :
+		pwd command:
 			Give the current directory
-		ls :
+		ls command:
 			The list of files in the working directory
 				-a 			--> Show hiddens too. (Starting with ".")
 				-A 			--> Shows .'s And ..'s
@@ -43,19 +44,24 @@ Linux Commands:
 				-h			--> Human readable, e.g. sizes
 				-C			--> List entries by columns
 				-F			--> Classify, append indicator (*/=>@|) to the entries
+				-R			--> Recursive
 				--color=	--> To classify by colors(e.g. --color=auto)
+			
+			Result of ls -l :
+				Permission
+				Number of hard links
 				
-		cd : 
+		cd command: 
 			Change the directory 
 				e.g. cd /usr/
 				cd . 		 --> The Current dir
 				cd .. 		 --> The parent dir
 				cd <Nothing> --> Home dir
 				cd - 		 --> The previous dir
-		ll : 
+		ll command: 
 			The same as ls but more details (ls -alF)
 			
-		less :
+		less command:
 			View text files
 				Page up/Page down --> Scrolling
 				G 				  --> Go to the end
@@ -65,12 +71,12 @@ Linux Commands:
 				h       		  --> help
 				q 				  --> quit
 				
-		more :
+		more command:
 			To view text files (Same as less)
 			less is much more than more (CONFUSED)
 			more is older than less and less is better because read the gzs and binaries
 				
-		file :
+		file command:
 			Classify file's contents
 				Recognize : 
 					ASCII, Bash Script, GNU tar, gzip, JPEG, Post Script, RPM, Zip, etc.
@@ -180,6 +186,7 @@ Linux Commands:
 				Virtual dir that correspond to all running processes
 					/proc/cpuinfo				--> CPU infos
 					/proc/sys/kernel/pid_max	--> Maximum value of pid
+					/proc/bus/input/devices		--> All input devices
 					
 			/media & /mnt :
 				Use for mount points
@@ -193,19 +200,19 @@ Linux Commands:
 				.inputrc :
 					Individual readline initialization file
 				
-	du :
+	du command:
 		Summarize disk usage of each file
 		-s --> Summarize, Display only total for each argument
 		-a --> Count for all files not dirs
 		-h --> Human readable
 			
-	ln Command :
+	ln command:
 		Making a symbolic link 
 		ln -T target <link name>
 		ln -s target <link name>	--> Make symbolic link not hard one
 		
 		
-	find :
+	find command:
 		Search for files in a directory
 		-type type 		--> Find types (f, b, c, d, l, p)
 		-print 			--> Print the out put
@@ -226,27 +233,27 @@ Linux Commands:
 		-user uname		--> Files that are owned by uname user
 		 
 						
-	wc : 
+	wc command: 
 		Print newline, word, count, and byte count for each file
 		-l --> Line count
 		-c --> Byte count
 		-w --> Word count
 		
-	lpr : 
+	lpr command: 
 		Print Files
 		
-	printenv :
+	printenv command:
 		List of the environment parameters
 		
 	Environment variables :
 		host name	--> Show the host name
 		domain name	--> Show the domain name
 		
-	set : 
+	set command: 
 		Complete list of environment (more than printenv)
 		Understanding the shell variables
 		
-	export :
+	export command:
 		Use to export a variable to a executable program
 		Values to set a export :
 			VAR
@@ -258,42 +265,42 @@ Linux Commands:
 			.
 		
 	Manipulating files or dirs:
-		cp :
+		cp command:
 			Copy file or dirs 
 				cp <file1> <file2> 		--> If file2 exists it'll be overwritten silently
 				cp -i <file1> <file2> 	--> If file2 exists it'll be overwritten after users permission
 				cp <file1> <dir> 		--> Copy file to the dir with it own name
 				cp -R <dir1> <dir2> 	--> Copy Contents of dir1 in dir2
-		mv :
+		mv command:
 			Move files or dirs 
 				mv <file1> <file2> 		--> If file2 exists it'll be overwritten silently else the file1 will rename to file2
 				mv -i <file1> <file2> 	--> If file2 exists it'll be overwritten after users permission
 				mv <file1><file2> <dir> --> Move files , can be more, to the dir and if the dir dosen't exists error
 				mv <dir1> <dir2> 		--> If dir2 exists it'll be overwritten silently else the dir1 will rename to dir2
 				
-		rm :
+		rm command:
 			Remove files or dirs
 				-i <file1> <file2> 	--> Needs user permission before each delete
 				-r <dir1> <dir2> 	--> Remove dirs and all of their contents
 				-f					--> Force remove
 				
-		mkdir :
+		mkdir command:
 			Make dir
 
-		touch :
+		touch command:
 			Make an empty file
 			touch fileName				--> Make an empty file (like >fileName)
 			
 		Compressing :
-			tar:
+			tar command:
 				-c		--> Create a tar
 				-f file	--> Where is the file
 				-C dir	--> Unarchived in the dir
 				
-		scp :
+		scp command:
 			Secure copy, Remote copy
 			
-		patch :
+		patch command:
 			Apply a diff file to an original one
 			patch [options] [original] [patch]
 	
@@ -310,16 +317,16 @@ Linux Commands:
 			5- Files
 				e.g. /bin/date
 		
-		type :
+		type command:
 			Print the command types
 				using : type <command>
 			-p --> Just address			
 				
-		which :
+		which command:
 			To determine the exact location of the given exe
 				using : which <command>
 		
-		help :
+		help command:
 			Give help for a command 
 			
 			help 				--> Help for bash
@@ -333,7 +340,7 @@ Linux Commands:
 			Show the help
 				usage : <command> --help
 				
-		man :
+		man command:
 			Give manual page							
 			man <program>
 			man number <program>	--> Give the manual in section number
@@ -347,7 +354,7 @@ Linux Commands:
 	 			8. System administration commands daemons(use only for root)
 	 			9. Kernel routines[Non standard]
 			
-		info : 
+		info command: 
 			Give information about program
 			info <program>
 			
@@ -407,7 +414,7 @@ Linux Commands:
 					$pid is your pid
 	
 	Filters :
-		sort :
+		sort command:
 			Sort contents of a file
 			-n 		--> numeric sort
 			-r 		--> reverse	
@@ -416,10 +423,10 @@ Linux Commands:
 			
 			
 		
-		uniq :
+		uniq command:
 			Uniq sort (Remove the repetitive)
 			
-		grep :
+		grep command:
 			Find pattern of chars in the input
 			-i	--> Ignore case
 			-c 	--> Give the count instead of all
@@ -429,13 +436,13 @@ Linux Commands:
 			-q	--> Silent, Don't show the output
 				The same as grep sth|wc -l
 				
-		cut :
+		cut command:
 			Remove sections from each line or file
 			-d			--> Use DELIM instead of tabs
 			-c=chars	--> Select only this chars
 			
 				
-		tr :
+		tr command:
 			Translate or delete characters
 			change the chars e.g. make them lowercase
 			Note :
@@ -448,52 +455,64 @@ Linux Commands:
 				tr '[:upper:]' '[:lower:]'
 			
 		
-		fmt :
+		fmt command:
 			return the formated text of the input
 			
-		pr : 
+		pr command: 
 			Split the input into pages 
 			
-		head : 
+		head command: 
 			Out put the first part of the input
 			-n Count --> Output the first count lines
 			-c c	 --> Output the first k bytes
 		
-		tail : 
+		tail command: 
 			Out put the last part of the input 
 			-c bytes	--> Output the last byte bytes
 			-n K		--> Output the last K lines
 			
-			
-		tr :
-			Translate chars
-		
-		sed :
+		sed command:
 			Stream editor
+			-n			--> Silent
+			-e script	--> Add a script to execute
 			
-		awk :
+			
+		awk command:
 			A programing lang for constructing filters
+			$n					--> nth column
+				$0 	--> Entire row
+			-F fieldSeparator	--> Set the field separator; If is other than tab or space such as ,
+			-f AwkCommand		--> Read the awk command file and do that (SMILE)
 			
-		column :
+			Notes :
+				If you set a condition in front of a block({}) the block will execute only if the condition was true
+				NF means number of fields
+				NR means number of rows
+			
+		column command:
 			To reformat the list as columned
 			-t 	--> Determine the input and make it table
 			-x	--> Fill columns before rows
 		
-		paste :
+		paste command:
 			Merge line of files
 			-d	--> Set delimiters			
 			-s	--> 
 		
-		tac :
+		tac command:
 			Reverse the input
 			-r 			--> Set regex
 			-s separator	--> Set the separator
 			
+		tee command:
+			Read from standard input and write on standard output
+			-a	--> Append
+			
 	Expansion :
-		printf :
+		printf command:
 			Format & print a text like c++
 			
-		echo :
+		echo command:
 			Print a text
 			echo <text> 			--> Print that text
 			echo * 					--> Semi ls (Because the * performs sooner) 
@@ -519,7 +538,7 @@ Linux Commands:
 				Second 	rwx	--> Read, write, and execute for the group owner of file
 				Third 	rwx --> Read, write, and execute for all users
 				
-		chmod :
+		chmod command:
 			Change the permissions
 			In octal :
 				rwx --> 7
@@ -539,28 +558,28 @@ Linux Commands:
 			x for dirs :
 				Allow to be entered (SMILE)
 			
-		su :
+		su command:
 			Make the current user super user
 			The $ becomes #
 			
-		sudo :
+		sudo command:
 			Save your pass for the current command
 			sudo <command>
 			
 			
-		chown :
+		chown command:
 			Change the owner
 			chown <the new owner> file --> Change the owner to the new owner
 			You must have permission to do this (must be super user)
 			
-		chgrp :
+		chgrp command:
 			Change the group owner
 			chgrp <new group> file --> Change the owner group to the new one
 			
-		access :
+		access command:
 			Check real user permission for file
 	
-		chage :
+		chage command:
 			Change user password expiry informations
 			-E theDate 	--> Change expire date to theDate
 			-I n		--> Set the number of inactivation after expiring
@@ -568,14 +587,14 @@ Linux Commands:
 			-m m		--> Minimum number of days to expire
 			-W n		--> Time to warn
 			
-		passwd :
+		passwd command:
 			Change password informations
 			-l			--> Lock the user
 			-u			--> Unlock the user
 			-S			--> Show the status of users
 			-a			--> Only can use with -S, means list all
 			
-	xload :
+	xload command:
 		System load average display for X		
 			
 	Environment :
@@ -590,14 +609,14 @@ Linux Commands:
 			~./bashrc			--> User's personal startup file
 			
 			
-	alias :
+	alias command:
 		Mixture of some commands that create new command 
 			
 		alias name=value
 		alias : 
 			Show the alias'
 			
-	date :
+	date command:
 		Print or set system date and time
 		-d --> Date
 		-s --> Set
@@ -631,7 +650,7 @@ Linux Commands:
 			26. %u --> Day of Week (1..7); 1 is Monday
 			27. %w --> Day of Week (0..6); 0 is Sunday			
 
-	bc :
+	bc command:
 		An arbitrary precision calculator language
 		
 		
@@ -708,10 +727,10 @@ Linux Commands:
 				e.g. command
 				echo $? --> 0..255 (Give the exit status)
 		
-		: command :
+		: command:
 			No work just return 0 means true		
 		
-		test :	
+		test command:	
 			Examine the command 
 			test expression / [expression] : Are the same
 			Some famous expressions :
@@ -752,7 +771,7 @@ Linux Commands:
 			
 			
 		Flow control :
-			if :
+			if command:
 				if conditions ; then
 					commands
 				[elif conditions; then
@@ -761,7 +780,7 @@ Linux Commands:
 					commands...]
 				fi
 			
-			case :
+			case command:
 				case variable in 
 					first ) 
 						;;
@@ -774,19 +793,19 @@ Linux Commands:
 				esac
 				* ) --> Runs if no one other runs (SMILE)
 				
-			while :
+			while command:
 				while [Condition]; do
 					#Sth
 				done
 				
-			until :
+			until command:
 				Do sth until the Condition is wrong
 				
 				until [Condition]; do
 					#Sth
 				done
 				
-			for :
+			for command:
 				For loop
 				
 				To shape:
@@ -797,18 +816,18 @@ Linux Commands:
 					for (( ; ; ; )); do
 						#Sth
 					done
-			select :
+			select command:
 				PS3 --> The comment to show before the select
 				select varName in list; do
 					#Sth
 				done				
 				Note :
 					You can mix the select and the case
-			break command :
+			break command:
 				break 		--> Comes out of the current loop				
 				break N		--> Comes out of N current loop
 				
-			continue command :
+			continue command:
 				continue	--> Resume the next iteration 
 				continue N	-->
 				
@@ -831,7 +850,7 @@ Linux Commands:
 						e.g. set -o ignoreeof (Turn the CTRL + D off)
 					set +o --> Unset variable options
 					
-				shopt :
+				shopt command:
 					-s optionName 	--> To set each option
 						shopt -s cdspell (turn on the cd spell cheeking)
 						shopt -s nocasematch (turn on the no case math option)
@@ -841,7 +860,7 @@ Linux Commands:
 			3. ;				--> Is Command separator
 			
 		Error handling :
-			trap :
+			trap command:
 				Do the arg when one of signals happened
 				trap arg signal
 				trap command signal
@@ -849,11 +868,11 @@ Linux Commands:
 				trap -l arg signalNums
 				trap - signal 	--> Clear the trap on that signal
 
-			journalctl :
+			journalctl command:
 				System logs
 
 		Shell editors :
-			vi / vim :
+			vi / vim command:
 				Shortcuts :
 					ESC 			--> Go to the command mode
 					ESC then I 		--> Go to edit mode
@@ -887,9 +906,9 @@ Linux Commands:
 					[ condition ] || false-command									
 	
 	Programing Tools :	
-		python :
+		python command:
 			Python interactive environment
-		gdb :
+		gdb command:
 			GNU debugger
 			For python :
 				interactive environment:
@@ -907,7 +926,7 @@ Linux Commands:
 				info threads	--> Gives the threads infos
 				py-list 		--> Where is this python code	
 				
-		watch :
+		watch command:
 			Execute a program periodically
 			-n seconds	--> Set the interval
 			-b			--> Beep if the program has non zero result
@@ -915,26 +934,46 @@ Linux Commands:
 					
 				
 	Over the network :
-		ssh : 
+		ssh command: 
 			ssh protocol to have shell 
 			-i identitiyfile	--> Sets the identity file to accesses the shell
 			
+		nmap command:
+			Network mapper
+			nmap host 			--> Show host open ports
+			-v					--> Increase verbosity
+			-iL inputFile		--> namp the inputFile that contains the ips
+			--exclude host		--> Exclude a host form the nmap result
+			--excludefile file	-->
+			-A					--> Enable OS detection, version detection, etc
+			-O					--> Enable OS detection
+			-sA					--> Out put the firewall rules of a system
+			-PN					--> Scan a host when is protexted by firewall
+			-6					--> Enable ipv6 scanning
+			-sP					--> Such as ping, Known as host discovery
+			-F					--> Fast scan
+			--packet-trace		--> Show all the packets
+			--iflist			--> Show interfaces list and routes
+			-p port				--> Nmap a specific port
+			
+			
+			
 	System Info :			
-		uptime :
+		uptime command:
 			Show the uptime of the system			
 	
-		id :
+		id command:
 			Give the Current User
 			-u --> Print only the effective user ID (If Equal zero is super user)
 			
-		uname :
+		uname command:
 			Print system info
 			-o --> Operating system
 			-r --> Kernel release
 			-p --> Processor
 			-a --> All
 			
-		who :
+		who command:
 			Show who has logged on
 									
 	System administration & Monitoring:
@@ -950,13 +989,13 @@ Linux Commands:
 						Will be destroyed by init command
 				3.
 			
-			jobs :
+			jobs command:
 				Show the background processes
 				
-			pstree :
+			pstree command:
 				Show ps as a tree
 			
-			ps :
+			ps command:
 				Show the background processes in more details (than jobs)
 				-p      	--> By Process ID
 				-a			--> All Processes
@@ -968,11 +1007,11 @@ Linux Commands:
 					e.g. -o pid=,cmd
 				-l 			--> Show in long format 
 				
-			pgrep :
+			pgrep command:
 				Look for the processes (grep in processes)
 				-u			--> User
 										 			
-			kill :
+			kill command:
 				Killing a process
 				kill %n 			--> Kill the nth program
 				kill ID 			--> Kill process by PID
@@ -993,38 +1032,38 @@ Linux Commands:
 						10. #8	SIGFBE	--> Floating point exception
 						11. #20	SIGSTP	--> Stop type at tty(CTRL + Z)						
 				
-			killall :
+			killall command:
 				Kill process by name
 					e.g. killall processName
 				-s signal	--> Send the Signal to the program
 			
-			pkill :
+			pkill command:
 				Kill by name, user, group, etc
 				-u user --> Kill by user
 				-KILL	--> Kill
 				-HUP	--> Make process reread it's config file
 			
-			bg :
+			bg command:
 				Resume the background processes
 				bg num	--> Restart the program with num pid
 				
-			fg :
+			fg command:
 				Place job in foreground
 			
-			fork :	
+			fork command:	
 				Create a new process by duplicating the calling process
 				
-			exec :
+			exec command:
 				Replace the current process image with a new process image
 			
-			clone :
+			clone command:
 				Create a new process, in manner similar to fork
 			
-			exit :
+			exit command:
 				Cause normal process termination
 		
 			Console management :
-				tty :
+				tty command:
 					Print the file name of the terminal connected to standard input
 					Exit status :
 						0	--> Is terminal
@@ -1032,78 +1071,78 @@ Linux Commands:
 						2	--> Given incorrect args
 						3	--> If write error occurs						
 						
-				reset :
+				reset command:
 					terminal initialization
-				tput :
+				tput command:
 					Initialize a terminal or query terminfo database.
 					cols 	--> Get width
 					lines	--> Get height
 					cup x y	--> Move the cursor to x, y
 					
-				setleds :
+				setleds command:
 					Set keyboard leds
 					+/- num
 					+/- caps
 					+/- scroll					
 					-D			--> Change both the VT flags and their default settings
 					
-				setterm :
+				setterm command:
 					Set terminal attributes
 				
-		df :
+		df command:
 			Show system disk usage
 			-l 	--> Show the list
 			-H	--> Show the list of disk usage
 		
-		fdisk :
+		fdisk command:
 			-l	--> Give the list of all disks
 	
-		free :
+		free command:
 			Display the amount of free and used memory in system
 			-m 	--> In mega
 			-k	--> In kilo
 			-b	--> In byte	
 		
-		w :
+		w command:
 			Show who is logged on and what they do
 			
-		netstat :
+		netstat command:
 			Print network connections
 			-i	--> Show all interfaces
 			
-		nc :
+		nc command:
 			Net cat command
 			
-		top :	
+		top command:	
 			Show CPU Usage			
 			
-		vmstat :
+		vmstat command:
 			
-		lsof :
+		lsof command:
 			List of open files
 			
-		tcpdump :
+		tcpdump command:
 			Show dump traffic on network
 			-i interface	--> Connect to the interface
 			
-		tcpflow :
+		tcpflow command:
 		
-		htop :
+		htop command:
 			You must install ittech podcasts apk
 			
-		iotop :
+		iotop command:
 			For disk usage
 			
-		iostat :
+		iostat command:
 			
-		iptraf :
+		iptraf command:
 			IP LAN net monitoring
 			
-		iftop :
+		iftop command:
 			Net send and receive status
 	
 	KDE / GTK+ GUI Dialog :
-		zenity :
+		zenity command:
 			--calendar			--> Show the calendar
 			--info				--> Make info dialog
 			--error				--> Make error dialog	
@@ -1116,11 +1155,11 @@ Linux Commands:
 			--timeout t			--> Set timeout
 			
 			
-		KDialog :
+		KDialog command:
 			Like zenity but for KDE
 
 	Other useful commands :
-		convert :
+		convert command:
 			Convert Images
 			e.g. :	
 				convert sth.jpg -size 128x128 sthElse.jpg
@@ -1128,7 +1167,7 @@ Linux Commands:
 			-resize	geometry 	--> Resize to geometry
 			-size geometry		--> Set the size	
 			-separate			--> Separate the picture channels	
-		feh :
+		feh command:
 			An image viewer
 			-z					--> Auto zoom
 			-x 					--> Border-less
@@ -1142,7 +1181,7 @@ Linux Commands:
 			-V					--> Verbose
 			--zoom %|max|fill	--> Zoom
 			
-		mail command :
+		mail command:
 			Send and receive mail 
 			-s subject			--> Modify the subject
 			-a attachment		--> Modify the attachment
@@ -1152,18 +1191,18 @@ Linux Commands:
 			Examples :
 				mail -s "Sth" Someone@Somewhere.SomewhereElse "Hello Mail!(WINK)"
 		
-		bash :
+		bash command:
 			-C command 	--> Run the command at the sub-shell and output the result
 			
-		at :
+		at command:
 			Do the given job at a time
 			e.g. echo "echo 'Hello'" | at sometime
 			
-		xargs :
+		xargs command:
 			Build and execute command line from standard input
 			-a file	--> Read from file instead of standard input
 		
-		dialog :
+		dialog command:
 			--gauge text height width		--> Display that text
 			--title name					--> Specify the title
 			--fselect						--> File selection box
@@ -1182,3 +1221,20 @@ Linux Commands:
 			--inputbox						--> Have an input box
 			--passwordbox					--> Password box
 			--insecure						--> Show * instead of passwd chars
+			
+		xinput command:
+			Utility to config inputs
+			set-prop id						--> Set properties for id						
+			--test id						--> Test input motions
+		
+		CMus command:
+			Console music player
+			
+		w3m command:
+			Console web browser
+			
+		elinks command:
+			Console web browser
+			
+		talk command:
+			Talk to another user		
