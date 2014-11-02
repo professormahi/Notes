@@ -1061,6 +1061,16 @@ Linux Commands:
 			
 			exit command:
 				Cause normal process termination
+			
+			User management:
+				useradd command:
+					Add a new user
+					-d HomeDir	--> Set home directory
+					-G Group	--> Set group
+				userdel command:
+					Usage : userdel username
+					-r			--> Delete home directory of user and other datas
+					
 		
 			Console management :
 				tty command:
