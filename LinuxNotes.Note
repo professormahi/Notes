@@ -593,6 +593,7 @@ Linux Commands:
 			-u			--> Unlock the user
 			-S			--> Show the status of users
 			-a			--> Only can use with -S, means list all
+			-d			--> Delete password for user
 			
 	xload command:
 		System load average display for X		
