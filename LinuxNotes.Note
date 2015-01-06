@@ -440,6 +440,7 @@ Linux Commands:
 			Remove sections from each line or file
 			-d			--> Use DELIM instead of tabs
 			-c=chars	--> Select only this chars
+			-c n		--> Select nth char
 			
 				
 		tr command:
@@ -653,6 +654,9 @@ Linux Commands:
 
 	bc command:
 		An arbitrary precision calculator language
+		
+		Subcommands :
+			scale=num	--> Will scale the output 
 		
 		
 	Shell Scripts :
