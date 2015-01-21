@@ -623,6 +623,10 @@ Linux Commands:
 		-d --> Date
 		-s --> Set
 		-u --> UTC, Universal
+		
+		date +%<format>
+			Get the format
+		
 		Format Controls of output :
 			01. %% --> A literal
 			02. %a --> Weekday name in short (e.g. Sun)
@@ -1182,6 +1186,12 @@ Linux Commands:
 			-resize	geometry 	--> Resize to geometry
 			-size geometry		--> Set the size	
 			-separate			--> Separate the picture channels	
+		wget command:
+			To download
+			-O output			--> Set the output file
+			-b					--> Go in background
+			-o logfile			--> Log file address to log
+		
 		feh command:
 			An image viewer
 			-z					--> Auto zoom
@@ -1212,9 +1222,12 @@ Linux Commands:
 		at command:
 			Do the given job at a time
 			e.g. echo "echo 'Hello'" | at sometime
+			at now + count unit		--> Do at count unit after now
+			atq command				--> lists all users pending jobs
+			atrm num				--> Removes the #num command from queue
 			
 		xargs command:
-			Build and execute command line from standard input
+		Build and execute command line from standard input
 			-a file	--> Read from file instead of standard input
 		
 		dialog command:
