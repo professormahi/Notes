@@ -27,6 +27,13 @@ String functions:
 	.capitalize!
 		Save the capitalize in input
 		
+	.include? "to_search"
+		Returns true if the input has to_search
+		
+	.gsub!(to_replace, replace_with)
+		Global substitution of input
+		e.g. 'salam'.gsub!(/s/, 'th') --> thalam
+		
 Convertings :
 	Integer():
 		Convert to integer
@@ -40,12 +47,55 @@ Control flows:
 		else
 			# Commands
 		end
+		
 	unless: (unless means if not)
-		unless codition
+		unless condition
 			# Commands
 		else
 			# Commands
 		end
+		
+	while:
+		while condition do
+			# Commands
+		end
+		
+	until: (same as while not)
+		until condition
+			# Commands
+		end
 	
+	for:
+		for foo in foos
+			# Commands
+		end
+		
+		NOTE: 
+			(for i in 1...16) and (for i in 1..15) are same, Means that .. the last is included
+			
+	NOTE:			
+		{ #Commands } --> Means
+			do
+				# Commands
+			end
 	
-	
+	loop: (Infinite loop)
+		loop do
+		
+		end
+		
+	break:
+		break condition
+		
+	next:
+		next condition
+		
+	.times:
+		n.times { #Commands }
+		This command execute Commands n times
+
+Arrays:
+	.each { |foo| # Commands }
+	.each do |foo|
+		# Commands
+	end
