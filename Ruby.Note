@@ -1,0 +1,51 @@
+links:
+	http://www.codecademy.com/
+
+
+Mathematics:
+	all *, +, -, %, **(means power), /
+
+Input/Output:
+	Standard output:
+		puts
+		print
+	Standard input:
+		gets
+			.chomp
+			
+String functions:
+	.upcase
+		Result the uppercase of input
+		
+	.downcase
+		Result the lowercase of the input
+		
+	.capitalize
+		Result the capitalize of input
+		e.g. mahdi -> Mahdi
+	
+	.capitalize!
+		Save the capitalize in input
+		
+Convertings :
+	Integer():
+		Convert to integer
+		
+Control flows:
+	if:
+		if condition
+			# Commands
+		elsif condition
+			# Commands
+		else
+			# Commands
+		end
+	unless: (unless means if not)
+		unless codition
+			# Commands
+		else
+			# Commands
+		end
+	
+	
+	
