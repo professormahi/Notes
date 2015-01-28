@@ -4,11 +4,18 @@ links:
 
 Mathematics:
 	all *, +, -, %, **(means power), /
+	
+Operators:
+	<=>
+		first <=> second
+		Returns 0 if first and second are equal, 1 if first is greater, -1 if second is bigger
 
 Input/Output:
 	Standard output:
 		puts
+		
 		print
+		
 	Standard input:
 		gets
 			.chomp
@@ -37,9 +44,15 @@ String functions:
 	.split("to_split_with")
 		Split the input with to_split_with
 		
-Convertings :
+Convertings and types:
 	Integer():
 		Convert to integer
+		
+	.to_s
+		Convert to string
+		
+	.is_a? type
+		Returns true if the variables is from type "type"
 		
 Control flows:
 	if:
@@ -100,9 +113,18 @@ Control flows:
 Arrays:
 	[]
 	.each { |foo| # Commands }
-	.each do |foo|
+	
+	.each do |foo|	
 		# Commands
 	end
+	
+	.reverse!
+		Reverse the array(, or stings)
+	
+	.sort!
+		Sort the array
+		Usage:
+			{ |f, s| f <=>s }
 	
 Hashes: (Map, Dictionary)
 	{
@@ -112,5 +134,24 @@ Hashes: (Map, Dictionary)
 		.
 		.
 	}
+	
 	Hash.new
 		Creates a new hash
+		
+	.default = val
+		Set default value	
+		
+	.sort_by {|k, v| to_sort_with}
+		Sort hash with to_sort_with
+
+Methods:
+	def method_name(args):
+		# Commands
+	end	
+	
+	NOTE:	
+		()'s are note require
+		
+	NOTE:
+		def some_method(first, *second); Can be used like this some_method(first, second1, second2, ...)
+		Using * means many args as an array
