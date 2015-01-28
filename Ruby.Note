@@ -33,6 +33,9 @@ String functions:
 	.gsub!(to_replace, replace_with)
 		Global substitution of input
 		e.g. 'salam'.gsub!(/s/, 'th') --> thalam
+	
+	.split("to_split_with")
+		Split the input with to_split_with
 		
 Convertings :
 	Integer():
@@ -95,7 +98,19 @@ Control flows:
 		This command execute Commands n times
 
 Arrays:
+	[]
 	.each { |foo| # Commands }
 	.each do |foo|
 		# Commands
 	end
+	
+Hashes: (Map, Dictionary)
+	{
+		key => value,
+		key => value,
+		.
+		.
+		.
+	}
+	Hash.new
+		Creates a new hash
