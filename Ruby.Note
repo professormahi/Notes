@@ -9,6 +9,9 @@ Operators:
 	<=>
 		first <=> second
 		Returns 0 if first and second are equal, 1 if first is greater, -1 if second is bigger
+	
+	||=
+		Will assign if last value is null		
 
 Input/Output:
 	Standard output:
@@ -20,7 +23,7 @@ Input/Output:
 		gets
 			.chomp
 			
-String functions:
+String:
 	.upcase
 		Result the uppercase of input
 		
@@ -44,6 +47,16 @@ String functions:
 	.split("to_split_with")
 		Split the input with to_split_with
 		
+	<< sth
+		Add "sth" to the string
+		
+	NOTE:
+		For stings +, and << are the same
+	
+Numbers:
+	.next
+		Give the next number
+		
 Convertings and types:
 	Integer():
 		Convert to integer
@@ -51,10 +64,25 @@ Convertings and types:
 	.to_s
 		Convert to string
 		
+	.to_sym
+		Convert to symbol
+	
+	.to_a
+		Convert to array
+	
+	.intern
+		Just like .to_sym
+		
 	.is_a? type
 		Returns true if the variables is from type "type"
 		
-Control flows:
+	.object_id
+		Returns id of an object, Ruby understand equaling from this ids
+		
+	.respond_to? :method_name
+		Returns true if an object can respond to the method
+		
+Control flows and loops:
 	if:
 		if condition
 			# Commands
@@ -64,12 +92,21 @@ Control flows:
 			# Commands
 		end
 		
+		NOTE: Another type of if
+			expression if condition
+			
+		NOTE: Another
+			condition ? if_true_command : if_false_command
+		
 	unless: (unless means if not)
 		unless condition
 			# Commands
 		else
 			# Commands
 		end
+		
+		NOTE: Another type
+			expression unless condition
 		
 	while:
 		while condition do
@@ -109,6 +146,28 @@ Control flows:
 	.times:
 		n.times { #Commands }
 		This command execute Commands n times
+		
+	case:
+		case to_have_case_on
+		when first
+			# Commands
+		end
+		when second
+			# Commands
+		end
+		.
+		.
+		.
+		else
+			# Commands
+		end
+		
+	from.upto(till)
+		Do sth from "from" till "till"
+		
+	from.downto(till)
+		Just like upto but the oposite
+		
 
 Arrays:
 	[]
@@ -126,6 +185,15 @@ Arrays:
 		Usage:
 			{ |f, s| f <=>s }
 	
+	.push sth
+		Push sth to the array
+		
+	.zip array
+		Make hash using the input and the array
+		
+	<< value
+		Add a "value" to the array
+	
 Hashes: (Map, Dictionary)
 	{
 		key => value,
@@ -135,7 +203,7 @@ Hashes: (Map, Dictionary)
 		.
 	}
 	
-	Hash.new
+	Hash.new (or Hash.new(default_value))
 		Creates a new hash
 		
 	.default = val
@@ -143,6 +211,27 @@ Hashes: (Map, Dictionary)
 		
 	.sort_by {|k, v| to_sort_with}
 		Sort hash with to_sort_with
+		
+	.select {|k, v| condition}
+		Select with that condition
+	
+	.each_value { |v| do_sth_on_v }
+		Do do_sth_on_v on v		
+	
+	.each_key { |k| do_sth_on_k }
+		Do do_sth_on_k on k
+		
+	.delete
+		Delete a hash member
+			
+	1.9 standard:
+		={
+			key: val,
+			key: val,
+		} --> keys are symbols without ":"
+	
+	NOTE:
+		Hashes with symbol keys are faster :D
 
 Methods:
 	def method_name(args):
@@ -155,3 +244,23 @@ Methods:
 	NOTE:
 		def some_method(first, *second); Can be used like this some_method(first, second1, second2, ...)
 		Using * means many args as an array
+	
+	NOTE:
+		Ruby Accept default values
+		
+	NOTE:
+		You can use implicit return instead of return statement
+		e.g.
+			def (a, b)
+				a+b
+			end
+		
+Symbols:
+	:name
+
+Benchmark:
+	require 'benchmark'
+	usage:
+		Benchmark.realtime do
+			# Commands
+		end
