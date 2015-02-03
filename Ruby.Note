@@ -194,6 +194,13 @@ Arrays:
 	<< value
 		Add a "value" to the array
 	
+	.nil?
+		Returns true if array is nill
+		
+	.collect { |x| do_sth_on_x }
+		Do 'do_sth_on_x' on each member of array
+		
+	
 Hashes: (Map, Dictionary)
 	{
 		key => value,
@@ -254,6 +261,15 @@ Methods:
 			def (a, b)
 				a+b
 			end
+			
+	yield
+		Means go to the block
+		
+		NOTE: yield with parameters
+			Go to the block with the parameter
+			usage; yield(param)
+			
+		
 		
 Symbols:
 	:name
@@ -264,3 +280,102 @@ Benchmark:
 		Benchmark.realtime do
 			# Commands
 		end
+
+Prime:
+	require 'prime'
+	Prime.new (old style so you must use `$VERBOSE = nil`
+		Make new prime
+	
+	Prime.instance (Ruby 1.9)
+		Make new prime
+	
+	.next
+	
+	.first n
+		Return first n primes
+		Return the next prime
+		
+Proc:
+	Proc.new { block }
+	Name blocks
+	
+	.call
+		Call the proc			
+	
+	NOTE:
+		you can use converting methods as symbols as proc :D
+	
+	NOTE:
+		You can use &proc instead of block
+
+Lambda:
+	lambda new_lambda
+		Make new lambda
+	
+	NOTE: (Lambda and Proc diffrences)
+		Lambda check the number of arguments but proc not
+		return in lambda just ends lambda
+		
+Classes:
+	class name
+		content
+	end
+	
+	Constructor:
+		def initialize(args)
+			# Commands
+		end
+		
+	@name 
+		variables class
+		
+	$, @, or @@
+		$	--> Global
+		@	--> Belongs to instance
+		@@	--> Belongs to class (Maybe name it static)
+	
+	class a < b
+		Inheritance
+		
+	Super
+		Do the function of parent class		
+	
+	Methods in classes
+		Methods is classes must be as type bellow
+		def classname.mehtodname()
+			# Commands
+	
+	NOTE:
+		We have public and private methods
+		end
+		
+	attr_reader and attr_writer
+		To read/write attributes in class instead of creating methods(sth like C# properties)
+		
+	attr_accessors
+		Read and write access for an attribute
+		
+	
+Time:
+	Time.now
+		Returns nows
+	
+Modules:
+	module name
+		# Module body
+	end
+	
+	::
+		Access module's attribute
+		
+	include module
+		Include a module to avoid using ::(like using namespace)
+		
+	extend module
+		Extend a module in classes
+		
+Date:
+	require 'date'
+	
+	Date.today
+		Returns tody
