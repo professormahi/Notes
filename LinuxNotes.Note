@@ -87,8 +87,9 @@ Linux Commands:
 				The root dir
 			/boot : 
 				Boot loader ; The kernel files is called "vmlinuz"
+				
 			/etc :
-				Config Files
+				Config Files are stored here
 				Sub files & dirs :
 					/etc/passwd :
 						Essential info for each user
@@ -102,6 +103,7 @@ Linux Commands:
 								5. User ID info   --> Extera infos about the user							
 								6. Home dir for user
 								7. Command/Shell
+								
 					/etc/shadow :
 						Some where to keep the passes
 						format:					
@@ -115,6 +117,7 @@ Linux Commands:
 							     6. The number of days before password is to expire that user is warned him/her
 							     7. The number of days after expiring that the account in disabled
 							   	 8. Time since Jan 1, 1970 that account is expired
+							   	 
 					/etc/group :
 						Some where to keep groups informations
 						format :
@@ -124,6 +127,7 @@ Linux Commands:
 								 2. Password (if x has pass) --> Generally not used
 								 3. GID (Group ID)								 
 								 4. Group List   			 --> List of members
+								 
 					/etc/gshadow :
 						Same as shadow but for groups
 						
@@ -176,9 +180,12 @@ Linux Commands:
 						All modules to run, new, Just put .conf file here
 					
 			/bin & /usr/bin :
-				Programs
+				Programs & Main commands of system
+				
 			/sbin & /usr/sbin :
 				Programs for system admins
+				What are stored in sbin is more essential than bin
+				
 			/usr :
 				Sub dirs :
 					/usr/share/X11 :
@@ -191,7 +198,7 @@ Linux Commands:
 						Man packs(man command)
 					/usr/src:
 						Source code files
-			/usr/local :
+					/usr/local :
 				
 			/var :
 				Files that changes during system's running
@@ -202,6 +209,9 @@ Linux Commands:
 					
 				/var/spool :
 					Hold files that are queued for process
+					
+				/var/lock:
+					Lock files
 
 			/lib : 
 				The shared libraries (such as dlls)
@@ -216,17 +226,24 @@ Linux Commands:
 				For programs temp files
 
 			/dev :
-				Where devices are in
+				Where hardware devices are in
 				/dev/sda*:
 					The Hard
+					
 				/dev/sdb*:
 					Cool disks
+					
 				/dev/video*:
 					Web cams
+					
 				/dev/null:
 					A Special file to send unwanted output, will be discarded
-				/dev/urandom :
+					
+				/dev/random :
 					Random number generating form the kernel space
+					
+				/dev/tty*:
+					All consoles
 
 			/proc :
 				Virtual dir that correspond to all running processes
@@ -239,9 +256,14 @@ Linux Commands:
 					
 			/media & /mnt :
 				Use for mount points
+				/media		--> Removable medias
+				/mnt		--> File systems
 
 			/sys:
 				All hardware abstracted details
+				
+			/opt:
+				Where 3rd party softwares stores
 
 			~/ :
 				.bashrc :
@@ -284,7 +306,9 @@ Linux Commands:
 		-size n			--> Size limit
 		-uid n			--> Files that are owned by nth uid
 		-user uname		--> Files that are owned by uname user
-		 
+		
+	locate command:
+		find files by name
 						
 	wc command: 
 		Print newline, word, count, and byte count for each file
@@ -378,6 +402,10 @@ Linux Commands:
 		which command:
 			To determine the exact location of the given exe
 				using : which <command>
+		
+		whereis command:
+			To determine the exact location of the given exe, man, etc
+			
 		
 		help command:
 			Give help for a command 
@@ -1206,6 +1234,20 @@ Linux Commands:
 		
 		fdisk command:
 			-l	--> Give the list of all disks
+			
+			commands:
+				p	--> print
+				m	--> help
+				q	--> quit
+			
+		parted command:
+			Partition management 
+			
+			commands:
+				p	--> print
+				
+		gparted command:
+			Graphical partition management
 	
 		free command:
 			Display the amount of free and used memory in system
@@ -1217,6 +1259,8 @@ Linux Commands:
 			For disk usage
 				
 		iostat command:
+			Stats for input and outputs
+			
 	
 	Network management commands:
 		netstat command:
@@ -1298,7 +1342,14 @@ Linux Commands:
 			-resize	geometry 	--> Resize to geometry
 			-size geometry		--> Set the size	
 			-separate			--> Separate the picture channels	
+	
+	Shared libraries management:
+		ldd command:
+			List all dependence libraries	
 		
+		ldconfig command:
+			List all libraries
+			-p	--> print
 	
 	KDE / GTK+ GUI Dialog :
 		zenity command:
@@ -1362,7 +1413,10 @@ Linux Commands:
 		dmesg command:
 			/var/log/dmesg 			--> Just unitl boot
 			All logs during boot and till now
-			
+		
+		grub-install command:
+			Install grub on hard disk
+		
 		RunLevels:
 			0- Halt
 			1- Single user mode (recovery)			--> Just one user
