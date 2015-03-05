@@ -136,6 +136,27 @@ Linux Commands:
 					/etc/init.d : <Dir>
 						Various systems.
 						
+					/etc/inittab :
+						Default runlevels stores here(Old)
+						The main format of file is
+							id:runlevel:action:process
+							|____|________|_______|_____ 2 or 3 chars
+							     |________|_______|________ Which run level (If not mentioned in all runlevels it works)
+							              |_______|____________ What action (respawn, wait, ...)
+							                      |________________ What process to run
+					
+					/etc/init.d/
+						Default runlevels stores here
+						All processes are here and can used with these commands
+							start
+							stop
+							status
+							
+					/etc/rc/
+						All processes to start or kill in that runlevel
+						Files start with S means start
+						Files start with K means kill
+						
 					/etc/shells :
 						All Shells in the Linux	
 						
@@ -176,6 +197,9 @@ Linux Commands:
 				Files that changes during system's running
 				/var/log : 
 					Log files
+					/var/log/messages	--> logs of system
+					/var/log/syslog		--> In Ubuntu systems
+					
 				/var/spool :
 					Hold files that are queued for process
 
@@ -1239,6 +1263,9 @@ Linux Commands:
 		talk command:
 			Talk to another user
 			
+		wall command:
+			Brodcast a message to all users
+			
 		feh command:
 			An image viewer
 			-z					--> Auto zoom
@@ -1330,6 +1357,60 @@ Linux Commands:
 			
 			aria2c command:
 				Download manager
+				
+	Boot management:
+		dmesg command:
+			/var/log/dmesg 			--> Just unitl boot
+			All logs during boot and till now
+			
+		RunLevels:
+			0- Halt
+			1- Single user mode (recovery)			--> Just one user
+			2- Debian/Ubuntu default
+			3- RHEL/Fedora/SUSE text mode
+			4- free									--> You can manage that
+			5- RHEL/Fedora/SUSE graphical mode
+			6- reboot
+		
+		runlevel command:
+			Show the current runlevel
+			If the shown runlevel is N means there are no previous runlevel
+			
+		telinit command:(init command)
+			Change runlevel
+			usage
+				telinit run_level
+				
+		initctl command:
+			Control all services
+			list		--> Show list of services
+			
+		service command:
+			Control services
+			start		--> Start a service
+			stop		--> Stop a service
+			status		--> Show the status of a service
+				
+		systemctl command:
+			In Fedora managing services, like service command
+	
+	Shutdown and reboot commands:
+		shutdown command:
+			Send term signal to all processes
+		-h		--> Halt
+		-r		--> Reboot
+		-c		--> Cancel
+		
+		usage
+			shutdown [options] time message
+			time:
+				time can be a real time, seconds from now, now
+		
+		poweroff command:
+			A link to shutdown and turn the motherboard off too
+			
+		reboot command:
+			Reboot the system
 			
 	Other useful commands :					
 		bash command:
