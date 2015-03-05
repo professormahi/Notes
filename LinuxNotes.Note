@@ -16,6 +16,7 @@ Linux Commands:
 				Not member of those up sets
 		5. For .gz use zless
 		6. With using '\' the commands can become multi line (Without space after it)
+		
 	Shell :	
 		7. ps $$ 	--> See open shells
 		8. Regex (Regular expression)
@@ -125,20 +126,33 @@ Linux Commands:
 								 4. Group List   			 --> List of members
 					/etc/gshadow :
 						Same as shadow but for groups
+						
 					/etc/fstab :
 						Mounted Devices
+						
 					/etc/hosts :
 						Net host names & IP addresses
+						
 					/etc/init.d : <Dir>
 						Various systems.
+						
 					/etc/shells :
 						All Shells in the Linux	
+						
 					/etc/profile : 
 						The system wide initialization file, executed for login shells
+						
 					/etc/bash.bashrc :
 						Is not standard, the system wide per-interactive-shell startup
+						
 					/etc/bash.logout :
 						Bash closing clean up
+						
+					/etc/modules :
+						All modules to run, old fashioned
+						
+					/etc/modprob.d/
+						All modules to run, new, Just put .conf file here
 					
 			/bin & /usr/bin :
 				Programs
@@ -164,32 +178,47 @@ Linux Commands:
 					Log files
 				/var/spool :
 					Hold files that are queued for process
+
 			/lib : 
 				The shared libraries (such as dlls)
+
 			/home :
 				The users home dir (SMILE) , the only place that a user can write file in
+
 			/root :
 				The root user home (SMILE)
+
 			/tmp :
 				For programs temp files
+
 			/dev :
 				Where devices are in
 				/dev/sda*:
 					The Hard
+				/dev/sdb*:
+					Cool disks
 				/dev/video*:
 					Web cams
 				/dev/null:
 					A Special file to send unwanted output, will be discarded
 				/dev/urandom :
 					Random number generating form the kernel space
+
 			/proc :
 				Virtual dir that correspond to all running processes
 					/proc/cpuinfo				--> CPU infos
 					/proc/sys/kernel/pid_max	--> Maximum value of pid
+					/proc/sys/net/				--> All about net
 					/proc/bus/input/devices		--> All input devices
+					/proc/meminfo				--> Memory info
+					/proc/mounts				--> All mounted devices
 					
 			/media & /mnt :
 				Use for mount points
+
+			/sys:
+				All hardware abstracted details
+
 			~/ :
 				.bashrc :
 					User bash settings
@@ -531,7 +560,7 @@ Linux Commands:
 			echo -n 				--> Don't out put the trailing new line (Don't leave the current line)
 				
 				
-	Account management :
+	Account management (Permissions management) :
 		ls permissions Result:
 			-rwxrwxrwx : (owner, group, other)
 				The only  - --> "-" For file and "d" for dirs
@@ -966,7 +995,6 @@ Linux Commands:
 			-p port				--> Nmap a specific port
 			
 			
-			
 	System Info :			
 		uptime command:
 			Show the uptime of the system			
@@ -984,130 +1012,169 @@ Linux Commands:
 			
 		who command:
 			Show who has logged on
-									
-	System administration & Monitoring:
-		Job control : (Process Control)
-			Notes :
-				1. Put a program on background --> program &			
-				2. Process States:
-					D(uninterpretable sleep)--> Process is sleeping and can't bring back until an event such as I/O occurred
-					R(running)				--> Process is running or executing
-					S(sleeping)				--> Process is not running and is waiting for event or a signal
-					T(traced or stopped)	--> Process is stopped by signals; such as SIGINT or SIGSTOP
-					Z(zombie or defunct)	--> Process that are dead but their parent didn't destroy them properly
-						Will be destroyed by init command
-				3.
 			
-			jobs command:
-				Show the background processes
-				
-			pstree command:
-				Show ps as a tree
-			
-			ps command:
-				Show the background processes in more details (than jobs)
-				-p      	--> By Process ID
-				-a			--> All Processes
-				-u userlist	--> Select by real user id
-				-f			--> Full format listing
-				-e			--> Select all processes
-				-C cmdlist	--> Select by command name
-				-o format	--> Customize the format
-					e.g. -o pid=,cmd
-				-l 			--> Show in long format 
-				
-			pgrep command:
-				Look for the processes (grep in processes)
-				-u			--> User
-										 			
-			kill command:
-				Killing a process
-				kill %n 			--> Kill the nth program
-				kill ID 			--> Kill process by PID
-				kill -l 			--> The variety of signals to process
-				kill -SIGNAL PID 	--> Kill the process with that signal
-				
-					Some signals:
-						0. #0	Success	--> Program exit with no error
-						1. #1 	SIGHUP 	--> Hangup signal; Send to process running in terminal when you close the terminal
-						02. #2 	SIGINT 	--> Interrupt signal; When ctrl+c is pressed
-						03. #15 SIGTERM --> Termination signal; The default kill signal if no signal specified
-						04. #9 	SIGKILL --> Kill signal; Immediate termination of program by kernel, Program can't listen
-						05. #19	SIGSTOP	--> Stop process
-						06. #18 SIGCONT	--> Continue process if stopped		
-						07. #3	SIGQUIT	--> Quit from keyboard
-						08. #4	SIGILL	--> Terminate the process and dump the core
-						09. #6	SIGABRT	--> Abort signal
-						10. #8	SIGFBE	--> Floating point exception
-						11. #20	SIGSTP	--> Stop type at tty(CTRL + Z)						
-				
-			killall command:
-				Kill process by name
-					e.g. killall processName
-				-s signal	--> Send the Signal to the program
-			
-			pkill command:
-				Kill by name, user, group, etc
-				-u user --> Kill by user
-				-KILL	--> Kill
-				-HUP	--> Make process reread it's config file
-			
-			bg command:
-				Resume the background processes
-				bg num	--> Restart the program with num pid
-				
-			fg command:
-				Place job in foreground
-			
-			fork command:	
-				Create a new process by duplicating the calling process
-				
-			exec command:
-				Replace the current process image with a new process image
-			
-			clone command:
-				Create a new process, in manner similar to fork
-			
-			exit command:
-				Cause normal process termination
-			
-			User management:
-				useradd command:
-					Add a new user
-					-d HomeDir	--> Set home directory
-					-G Group	--> Set group
-				userdel command:
-					Usage : userdel username
-					-r			--> Delete home directory of user and other datas
-					
+	Hardware management commands:
+		lsof command:
+			List of open files
+
+		lsusb command:
+			List of all connected usb devices
+
+		lspci command:
+			List of all pci connected devices
+
+		lshw command:
+			List all hardwares that are connected
 		
-			Console management :
-				tty command:
-					Print the file name of the terminal connected to standard input
-					Exit status :
-						0	--> Is terminal
-						1	--> Is not terminal
-						2	--> Given incorrect args
-						3	--> If write error occurs						
-						
-				reset command:
-					terminal initialization
-				tput command:
-					Initialize a terminal or query terminfo database.
-					cols 	--> Get width
-					lines	--> Get height
-					cup x y	--> Move the cursor to x, y
-					
-				setleds command:
-					Set keyboard leds
-					+/- num
-					+/- caps
-					+/- scroll					
-					-D			--> Change both the VT flags and their default settings
-					
-				setterm command:
-					Set terminal attributes
+		lsmod command:
+			All modules that are loaded by Kernel
+		
+		rmmod command:
+			Remove a module
+		
+		insmod command:
+			Install a module
+			
+		modprobe command:
+			Install a module, Better than insmod because of dependecies
+			
+		uuid command:
+			Each hardware has an ID
+		
+		blkid command:
+			List all block devices (Hard disk) IDs
+			
+	Job control : (Process management commands)
+		Notes :
+			1. Put a program on background --> program &			
+			2. Process States:
+				D(uninterpretable sleep)--> Process is sleeping and can't bring back until an event such as I/O occurred
+				R(running)				--> Process is running or executing
+				S(sleeping)				--> Process is not running and is waiting for event or a signal
+				T(traced or stopped)	--> Process is stopped by signals; such as SIGINT or SIGSTOP
+				Z(zombie or defunct)	--> Process that are dead but their parent didn't destroy them properly
+					Will be destroyed by init command
+			3.
+		
+		jobs command:
+			Show the background processes
+			
+		pstree command:
+			Show ps as a tree
+		
+		ps command:
+			Show the background processes in more details (than jobs)
+			-p      	--> By Process ID
+			-a			--> All Processes
+			-u userlist	--> Select by real user id
+			-f			--> Full format listing
+			-e			--> Select all processes
+			-C cmdlist	--> Select by command name
+			-o format	--> Customize the format
+				e.g. -o pid=,cmd
+			-l 			--> Show in long format 
+			
+		pgrep command:
+			Look for the processes (grep in processes)
+			-u			--> User
+									 			
+		kill command:
+			Killing a process
+			kill %n 			--> Kill the nth program
+			kill ID 			--> Kill process by PID
+			kill -l 			--> The variety of signals to process
+			kill -SIGNAL PID 	--> Kill the process with that signal
+			
+				Some signals:
+					0. #0	Success	--> Program exit with no error
+					1. #1 	SIGHUP 	--> Hangup signal; Send to process running in terminal when you close the terminal
+					02. #2 	SIGINT 	--> Interrupt signal; When ctrl+c is pressed
+					03. #15 SIGTERM --> Termination signal; The default kill signal if no signal specified
+					04. #9 	SIGKILL --> Kill signal; Immediate termination of program by kernel, Program can't listen
+					05. #19	SIGSTOP	--> Stop process
+					06. #18 SIGCONT	--> Continue process if stopped		
+					07. #3	SIGQUIT	--> Quit from keyboard
+					08. #4	SIGILL	--> Terminate the process and dump the core
+					09. #6	SIGABRT	--> Abort signal
+					10. #8	SIGFBE	--> Floating point exception
+					11. #20	SIGSTP	--> Stop type at tty(CTRL + Z)						
+			
+		killall command:
+			Kill process by name
+				e.g. killall processName
+			-s signal	--> Send the Signal to the program
+		
+		pkill command:
+			Kill by name, user, group, etc
+			-u user --> Kill by user
+			-KILL	--> Kill
+			-HUP	--> Make process reread it's config file
+		
+		bg command:
+			Resume the background processes
+			bg num	--> Restart the program with num pid
+			
+		fg command:
+			Place job in foreground
+		
+		fork command:	
+			Create a new process by duplicating the calling process
+			
+		exec command:
+			Replace the current process image with a new process image
+		
+		clone command:
+			Create a new process, in manner similar to fork
+		
+		exit command:
+			Cause normal process termination
+			
+		top command:	
+			Show CPU Usage			
+											
+	
+	User management:
+		useradd command:
+			Add a new user
+			-d HomeDir	--> Set home directory
+			-G Group	--> Set group
+			
+		userdel command:
+			Usage : userdel username
+			-r			--> Delete home directory of user and other datas
+			
+		w command:
+			Show who is logged on and what they do
+			
+	Console management :
+		tty command:
+			Print the file name of the terminal connected to standard input
+			Exit status :
+				0	--> Is terminal
+				1	--> Is not terminal
+				2	--> Given incorrect args
+				3	--> If write error occurs						
 				
+		reset command:
+			terminal initialization
+		tput command:
+			Initialize a terminal or query terminfo database.
+			cols 	--> Get width
+			lines	--> Get height
+			cup x y	--> Move the cursor to x, y
+			
+		setleds command:
+			Set keyboard leds
+			+/- num
+			+/- caps
+			+/- scroll					
+			-D			--> Change both the VT flags and their default settings
+			
+		setterm command:
+			Set terminal attributes
+				
+	
+	Disk management commands:
 		df command:
 			Show system disk usage
 			-l 	--> Show the list
@@ -1120,11 +1187,14 @@ Linux Commands:
 			Display the amount of free and used memory in system
 			-m 	--> In mega
 			-k	--> In kilo
-			-b	--> In byte	
+			-b	--> In byte			
 		
-		w command:
-			Show who is logged on and what they do
-			
+		iotop command:
+			For disk usage
+				
+		iostat command:
+	
+	Network management commands:
 		netstat command:
 			Print network connections
 			-i	--> Show all interfaces
@@ -1132,66 +1202,43 @@ Linux Commands:
 		nc command:
 			Net cat command
 			
-		top command:	
-			Show CPU Usage			
-			
-		vmstat command:
-			
-		lsof command:
-			List of open files
-			
 		tcpdump command:
 			Show dump traffic on network
 			-i interface	--> Connect to the interface
 			
 		tcpflow command:
-		
-		htop command:
-			You must install ittech podcasts apk
-			
-		iotop command:
-			For disk usage
-			
-		iostat command:
-			
+
 		iptraf command:
 			IP LAN net monitoring
 			
 		iftop command:
 			Net send and receive status
-	
-	KDE / GTK+ GUI Dialog :
-		zenity command:
-			--calendar			--> Show the calendar
-			--info				--> Make info dialog
-			--error				--> Make error dialog	
-			--question			--> Make question dialog
-			--title				--> Set title
-			--text				--> Set text
-			--window-icon  icon	--> Set window icon
-			--width
-			--height
-			--timeout t			--> Set timeout
-			
-			
-		KDialog command:
-			Like zenity but for KDE
-
-	Other useful commands :
-		convert command:
-			Convert Images
-			e.g. :	
-				convert sth.jpg -size 128x128 sthElse.jpg
-				convert sth.jpg SthElse.png
-			-resize	geometry 	--> Resize to geometry
-			-size geometry		--> Set the size	
-			-separate			--> Separate the picture channels	
-		wget command:
-			To download
-			-O output			--> Set the output file
-			-b					--> Go in background
-			-o logfile			--> Log file address to log
 		
+		nethogs command:
+			Network monitoring command
+	
+	Scheduling commands:
+		at command:
+			Do the given job at a time
+			e.g. echo "echo 'Hello'" | at sometime
+			at now + count unit		--> Do at count unit after now
+			atq command				--> lists all users pending jobs
+			atrm num				--> Removes the #num command from queue
+					
+	
+	Utility and personal usage commands:
+		CMus command:
+			Console music player
+			
+		w3m command:
+			Console web browser
+			
+		elinks command:
+			Console web browser
+			
+		talk command:
+			Talk to another user
+			
 		feh command:
 			An image viewer
 			-z					--> Auto zoom
@@ -1215,21 +1262,34 @@ Linux Commands:
 			
 			Examples :
 				mail -s "Sth" Someone@Somewhere.SomewhereElse "Hello Mail!(WINK)"
+				
+		convert command:
+			Convert Images, Image converter
+			e.g. :	
+				convert sth.jpg -size 128x128 sthElse.jpg
+				convert sth.jpg SthElse.png
+			-resize	geometry 	--> Resize to geometry
+			-size geometry		--> Set the size	
+			-separate			--> Separate the picture channels	
 		
-		bash command:
-			-C command 	--> Run the command at the sub-shell and output the result
+	
+	KDE / GTK+ GUI Dialog :
+		zenity command:
+			--calendar			--> Show the calendar
+			--info				--> Make info dialog
+			--error				--> Make error dialog	
+			--question			--> Make question dialog
+			--title				--> Set title
+			--text				--> Set text
+			--window-icon  icon	--> Set window icon
+			--width
+			--height
+			--timeout t			--> Set timeout
 			
-		at command:
-			Do the given job at a time
-			e.g. echo "echo 'Hello'" | at sometime
-			at now + count unit		--> Do at count unit after now
-			atq command				--> lists all users pending jobs
-			atrm num				--> Removes the #num command from queue
 			
-		xargs command:
-		Build and execute command line from standard input
-			-a file	--> Read from file instead of standard input
-		
+		KDialog command:
+			Like zenity but for KDE
+			
 		dialog command:
 			--gauge text height width		--> Display that text
 			--title name					--> Specify the title
@@ -1253,16 +1313,28 @@ Linux Commands:
 		xinput command:
 			Utility to config inputs
 			set-prop id						--> Set properties for id						
-			--test id						--> Test input motions
+			--test id						--> Test input motions		
+			
+		Url download and upload:
+			wget command:
+				Download an url
+				-O output			--> Set the output file
+				-b					--> Go in background
+				-o logfile			--> Log file address to log
 		
-		CMus command:
-			Console music player
+			curl command:
+				Download urls, better than wget
+				
+			axel command:
+				Download manager
 			
-		w3m command:
-			Console web browser
+			aria2c command:
+				Download manager
 			
-		elinks command:
-			Console web browser
+	Other useful commands :					
+		bash command:
+			-C command 	--> Run the command at the sub-shell and output the result					
 			
-		talk command:
-			Talk to another user		
+		xargs command:
+			Build and execute command line from standard input
+				-a file	--> Read from file instead of standard input
