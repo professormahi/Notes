@@ -28,7 +28,16 @@ Linux Commands:
 		Shortcuts :
 			CTRL + L --> Clear
 			CTRL + R --> Search history commands			
+	
+	history command:
+		list history of my commands
+		-c		--> Clear history
+		number	--> Last number commands
 		
+		!!			--> Run last command
+		!string		--> Last command that starts with string	
+		!?string?	--> Last command that contains string
+		!number		--> Run #number command
 	
 	Navigation & Looking Around:
 		pwd command:
@@ -59,6 +68,7 @@ Linux Commands:
 				cd .. 		 --> The parent dir
 				cd <Nothing> --> Home dir
 				cd - 		 --> The previous dir
+				
 		ll command: 
 			The same as ls but more details (ls -alF)
 			
@@ -318,17 +328,31 @@ Linux Commands:
 		
 	lpr command: 
 		Print Files
+				
+	Environment variables :
+		HOSTNAME	--> Show the host name
+		USER		--> Current user
+		UID			--> User id
+		HOME		--> Users home
+		PWD			--> Where am I now
+		SHELL		--> Name of current shell
+		$			--> The current process id
+		PPID		--> Process id of parent
+		?			--> The last process execution code
+		RANDOM		--> A random number
+		PATH		--> Path of all binaries
 		
 	printenv command:
 		List of the environment parameters
 		
-	Environment variables :
-		host name	--> Show the host name
-		domain name	--> Show the domain name
+	env command:
+		List all environment variables, same as printenv
 		
 	set command: 
 		Complete list of environment (more than printenv)
 		Understanding the shell variables
+		-u 		--> Can't use unknowns
+		+u		--> Can use unknowns
 		
 	export command:
 		Use to export a variable to a executable program
@@ -434,6 +458,14 @@ Linux Commands:
 				7. Miscellanea(undocumented)
 	 			8. System administration commands daemons(use only for root)
 	 			9. Kernel routines[Non standard]
+	 			
+	 		-f						--> Search for string in titles of commands
+	 		-k						--> Search more, in the infos too
+	 		
+	 	apropos command:
+	 		Search for input in commands
+	 		usage:
+	 			apropos command
 			
 		info command: 
 			Give information about program
@@ -803,7 +835,7 @@ Linux Commands:
 				Show all declared variables with; declare [option] | less
 			
 			undeclare commands :
-				unset :
+				unset command:
 					e.g. unset -f function
 			local variables :
 				local name
@@ -982,6 +1014,7 @@ Linux Commands:
 			Use source command				--> Run on the existing shell and variables and data remains
 			Use bash command				--> Use bash to execute
 			Use exec command				--> Avoid use of sub-shell
+			Use (command)					--> Run command on a subshell
 			
 			Note :
 				1. Running the script make a sub-shell, To avoid sub-shell making use exec command
@@ -1057,13 +1090,19 @@ Linux Commands:
 			
 		uname command:
 			Print system info
-			-o --> Operating system
-			-r --> Kernel release
-			-p --> Processor
-			-a --> All
+			-o	--> Operating system
+			-r	--> Kernel release
+			-p	--> Processor
+			-a	--> All
+			-s	--> Kernel name
+			-n	--> Node name or Host name
+			-m	--> Machine hardware CPU name, x86 or x64
 			
 		who command:
 			Show who has logged on
+			
+		whoami command:
+			Show who are you ;)
 			
 	Hardware management commands:
 		lsof command:
