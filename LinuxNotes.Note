@@ -1466,6 +1466,47 @@ Linux Commands:
 		reboot command:
 			Reboot the system
 			
+	Package managers:
+		Debian bases:
+			apt-get command:
+				install				--> Install a package
+				remove				--> Remove package
+				update				--> Update list of packages
+				autoremove package	--> Delete dependencies
+				autoremove			--> Delete unnecessary packages				
+				upgrade				--> Update packages
+				dist-upgrade		--> Upgrade to new distribution; e.g. kernel update				
+				--download-only		--> Just download package
+				-s					--> Simulate installing a package
+				-d					--> Download only mode
+				
+			apt-chace command:
+				search				--> Search for a package
+				
+			aptitude command:
+				Ubuntu modern package manager
+				search 				--> Search for a package
+				install
+				remove
+				show				--> Show all configures of a package
+				
+			dpkg command:				
+				--contents			--> All contents of deb package
+				-s					--> Status of a package
+				-P					--> Purge an application, Remove all files
+				--purge				--> Like -P
+				-L					--> All directories and files that a package has made
+				-S					--> Show who has installed that file
+				-r					--> Remove a package
+				
+			dpkg-reconfigure command:
+				Reconfigure a package				
+				
+			/etc/apt/:
+				apt-get configure files are stored here
+				/etc/apt/sources.list	--> Where packages are located
+				/etc/apt/sources.list.d	--> All sources.list files
+			
 	Other useful commands :					
 		bash command:
 			-C command 	--> Run the command at the sub-shell and output the result					
