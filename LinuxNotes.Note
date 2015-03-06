@@ -1467,7 +1467,7 @@ Linux Commands:
 			Reboot the system
 			
 	Package managers:
-		Debian bases:
+		Debian based:
 			apt-get command:
 				install				--> Install a package
 				remove				--> Remove package
@@ -1498,6 +1498,7 @@ Linux Commands:
 				-L					--> All directories and files that a package has made
 				-S					--> Show who has installed that file
 				-r					--> Remove a package
+				-i					--> Install .deb package
 				
 			dpkg-reconfigure command:
 				Reconfigure a package				
@@ -1506,6 +1507,53 @@ Linux Commands:
 				apt-get configure files are stored here
 				/etc/apt/sources.list	--> Where packages are located
 				/etc/apt/sources.list.d	--> All sources.list files
+		
+		RPM based:
+			Red had package manager
+			
+			rpm command:
+				-i					--> Install .rpm package
+				-e					--> Erase packages				
+				-U					--> Install or upgrade
+				-F					--> Just upgrade, Upgrade if installed
+				-v					--> Verbose
+				-h					--> Human readable
+				-q					--> Query a package
+				-qa					--> List all installed package
+				-ql					--> List all files that package copied in your system
+				-qf					--> List all packages that copies that file
+				-qR					--> List all requirements of a packages
+				-K					--> Check the signatures of a package
+				-V					--> Verify that are the files of this package raw or intrupted, Check if files of that package are OK
+				
+				
+			yum command:
+				install				--> Install a package
+				upgrade 			--> Upgrade files
+				upgrade 'regex'		--> Upgrade matching regex files
+				list				--> List that a package is installed or not
+				info				--> Infos about package
+				search				--> Search for a package
+				deplist				--> List dependency list of a package
+				whatprovides		--> List packages that install that command
+					e.g. yum whatprovides jcal
+				-C					--> Use cache
+				-y					--> Yes the Qs of yum
+			
+			yum-downloader command:
+				Just download a packge
+				--resolve			--> Download dependencies too
+				
+			rpm2cpio command:
+				Convert rpm packages to cpio archived packages
+				e.g.:
+					rpm2cpio package | cpio -id		--> This command open that rpm file
+				
+			/etc/yum.repos.d:
+				All .repo files are here
+				
+			/etc/yum.conf:
+				Yum configure file
 			
 	Other useful commands :					
 		bash command:
