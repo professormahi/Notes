@@ -4,7 +4,7 @@ Linux Commands:
 		2. There is no space in file names in Linux
 		3. Symbolic Links : Files that when you ll have "->" in front of them
 		4. Wild cards :
-			* --> Matches any chars
+			* --> Matches any string
 			? --> Matches any single char
 			[chars] :
 				[:alnum:] --> Alphanumeric
@@ -14,6 +14,7 @@ Linux Commands:
 				[:lower:] --> Lowercase alphabetic
 			[!chars] :
 				Not member of those up sets
+				
 		5. For .gz use zless
 		6. With using '\' the commands can become multi line (Without space after it)
 		
@@ -96,6 +97,7 @@ Linux Commands:
 			Classify file's contents
 				Recognize : 
 					ASCII, Bash Script, GNU tar, gzip, JPEG, Post Script, RPM, Zip, etc.
+				-i			--> print MIME type
 					
 		Famous Dirs :
 			/ :
@@ -306,21 +308,31 @@ Linux Commands:
 		Search for files in a directory
 		-type type 		--> Find types (f, b, c, d, l, p)
 		-print 			--> Print the out put
-		-iname name		--> Sth that is like name
+		-iname name		--> Sth that is like name, Not case sensetive
 		-name name		--> Base of file name is name
 		-P				--> Never follow symbolic links
 		-L				--> Follow symbolic links
 		-amin n			--> File accessed last n mins
 		-anewer file	--> File was last accessed more recently than file
 		-atime n		--> File was last accessed n*24 hours ago
+		-ctime n		--> Changed time
+		-mtime n		--> Modify time
 		-cmin n			--> File's status was changed last n mins
 		-empty			--> File that is empty and regular file
 		-executable		--> Files that are executable
 		-gid n			--> Files that are owned by nth gid
 		-group gname	--> Files that are owned by gname group
-		-size n			--> Size limit
+		-size n			--> Size limit; e.g. 100c, +100k, -100k, ...
 		-uid n			--> Files that are owned by nth uid
 		-user uname		--> Files that are owned by uname user
+		-type			--> Just find files with specific type; e.g. -type d(directory), l(link), f(file)
+		-ls				--> ls result of find
+		-print 			--> Print full name if the files on each line
+		-exec			--> Execute a command on resault
+			files are {}
+			e.g.
+				find . -empty -exec rm '{}' \;
+		
 		
 	locate command:
 		find files by name
@@ -373,16 +385,19 @@ Linux Commands:
 	Manipulating files or dirs:
 		cp command:
 			Copy file or dirs 
-				cp <file1> <file2> 		--> If file2 exists it'll be overwritten silently
-				cp -i <file1> <file2> 	--> If file2 exists it'll be overwritten after users permission
-				cp <file1> <dir> 		--> Copy file to the dir with it own name
-				cp -R <dir1> <dir2> 	--> Copy Contents of dir1 in dir2
+			<file1> <file2> 		--> If file2 exists it'll be overwritten silently
+			-i <file1> <file2> 		--> If file2 exists it'll be overwritten after users permission
+			<file1> <dir> 			--> Copy file to the dir with it own name
+			-R <dir1> <dir2> 		--> Copy Contents of dir1 in dir2
+			-b						--> Make a backup 
+				
+				
 		mv command:
 			Move files or dirs 
-				mv <file1> <file2> 		--> If file2 exists it'll be overwritten silently else the file1 will rename to file2
-				mv -i <file1> <file2> 	--> If file2 exists it'll be overwritten after users permission
-				mv <file1><file2> <dir> --> Move files , can be more, to the dir and if the dir dosen't exists error
-				mv <dir1> <dir2> 		--> If dir2 exists it'll be overwritten silently else the dir1 will rename to dir2
+			<file1> <file2> 		--> If file2 exists it'll be overwritten silently else the file1 will rename to file2
+			-i <file1> <file2> 		--> If file2 exists it'll be overwritten after users permission
+			<file1><file2> <dir>	--> Move files , can be more, to the dir and if the dir dosen't exists error
+			<dir1> <dir2> 			--> If dir2 exists it'll be overwritten silently else the dir1 will rename to dir2
 				
 		rm command:
 			Remove files or dirs
@@ -392,19 +407,56 @@ Linux Commands:
 				
 		mkdir command:
 			Make dir
+			-p						--> Make nested directories
+			
+		rmdir command:
+			Remove a directory
 
 		touch command:
 			Make an empty file
-			touch fileName				--> Make an empty file (like >fileName)
+			touch fileName			--> Make an empty file (like >fileName)
+			-t						--> Change time
+			-d						--> Change date
+				Date after -d can be relative e.g. yesterday
+			-r ref file				--> Set time of ref for file
 			
-		Compressing :
+		Compressing files:
+			gzip command:
+				Compress files, Removes original file
+				
+			gunzip command:
+				Unzip files
+				
+			bzip command:
+				Compress files
+			
+			bunzip command:
+				Unzip files
+		
+		Archiving files :
 			tar command:
 				-c		--> Create a tar
 				-f file	--> Where is the file
 				-C dir	--> Unarchived in the dir
+				-z		--> Zip with gzip
+				-x		--> Extract the archive file
+				-r		--> Append files to archive
+				
+			cpio command:
+				Archive some files
+				-o		--> Make output from input
+				-i		--> Mention the input
+				-d		--> Make directories
 				
 		scp command:
 			Secure copy, Remote copy
+			
+		dd command:
+			Convert and copy a file
+			if=input	--> Mention input
+			of=output	--> Mention output
+			bs=size		--> Block size
+			count=1		--> How many files to make
 			
 		patch command:
 			Apply a diff file to an original one
