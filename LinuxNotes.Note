@@ -548,7 +548,7 @@ Linux Commands:
 			
 		Standard input:
 			< 	--> Input from file (e.g. command < file)
-			<<	--> 
+			<<	--> Here docs
 			<<- --> Ignore tabs not spaces
 			-	--> Means stdin
 		
@@ -567,11 +567,11 @@ Linux Commands:
 					e.g. du | sort -nr
 					Sort the out put
 		Some numbers :
-			0 --> Input
-			1 --> Output
-			2 --> Error
+			0 --> Input, stdin
+			1 --> Output, stdout
+			2 --> Error, stderr
 				Command 2> errorLogger
-			& --> Both error and output (Equivalent to 2>&1)
+			& --> Both error and output (Equivalent to '> file 2>&1')
 				Command &> somewhere
 			Without numbers (command > somewhere):
 				It means the output
@@ -703,7 +703,7 @@ Linux Commands:
 			-s separator	--> Set the separator
 			
 		tee command:
-			Read from standard input and write on standard output
+			Read from standard input and write on standard output and files(at the same time show on both stdout and file)
 			-a	--> Append
 			
 		od command:
@@ -1699,4 +1699,10 @@ Linux Commands:
 			
 		xargs command:
 			Build and execute command line from standard input
-				-a file	--> Read from file instead of standard input
+			Uses inputs as arguments of command
+			-a file			--> Read from file instead of standard input
+			-max-args num	--> Each time uses max #num arguments
+			-L num			--> Each #num lines is an arguments
+			-I INPUT		--> Replace INPUT with input
+			e.g.
+				ls | xargs echo files:		--> will echo "files: all files in ls"
