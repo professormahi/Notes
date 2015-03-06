@@ -56,6 +56,7 @@ Linux Commands:
 				-F			--> Classify, append indicator (*/=>@|) to the entries
 				-R			--> Recursive
 				--color=	--> To classify by colors(e.g. --color=auto)
+				-1			--> Show files in 1 column
 			
 			Result of ls -l :
 				Permission
@@ -86,6 +87,10 @@ Linux Commands:
 			To view text files (Same as less)
 			less is much more than more (CONFUSED)
 			more is older than less and less is better because read the gzs and binaries
+			
+		cat command:
+			Show file, Concatenate files
+			-n					--> Show line numbers
 				
 		file command:
 			Classify file's contents
@@ -493,6 +498,7 @@ Linux Commands:
 			< 	--> Input from file (e.g. command < file)
 			<<	--> 
 			<<- --> Ignore tabs not spaces
+			-	--> Means stdin
 		
 		Pipelines :
 			Is "|"
@@ -513,7 +519,7 @@ Linux Commands:
 			1 --> Output
 			2 --> Error
 				Command 2> errorLogger
-			& --> Both input and output (Equivalent to 2>&1)
+			& --> Both error and output (Equivalent to 2>&1)
 				Command &> somewhere
 			Without numbers (command > somewhere):
 				It means the output
@@ -537,7 +543,13 @@ Linux Commands:
 			
 		
 		uniq command:
-			Uniq sort (Remove the repetitive)
+			Report or omit repeated lines
+			NOTE:
+				uniq command just works on sorted input
+			-c		--> Prefix lines by the number of occurrences 
+			-u		--> Output only lines uniq(don't print lines occurred more than one)
+			-d		--> Output differences 
+			-f N	--> Avoid comparing the first N fields
 			
 		grep command:
 			Find pattern of chars in the input
@@ -554,6 +566,7 @@ Linux Commands:
 			-d			--> Use DELIM instead of tabs
 			-c=chars	--> Select only this chars
 			-c n		--> Select nth char
+			-f n		--> Select filed #n
 			
 				
 		tr command:
@@ -567,13 +580,26 @@ Linux Commands:
 				-c 		--> Complement
 			Examples :
 				tr '[:upper:]' '[:lower:]'
+				
+		expand command:
+			Convert tabs to spaces
+			
+		unexpand command:
+			Convert spaces to tab
+			-a			--> Change all spaces
 			
 		
 		fmt command:
-			return the formated text of the input
+			Return the formated text of the input
+			Originally wrap file in 60 chars each line 
+			-w num		--> Wrap each #num chars as a line
+			  
 			
 		pr command: 
-			Split the input into pages 
+			Split the input into pages, for print
+			
+		nl command:
+			Number lines of files
 			
 		head command: 
 			Out put the first part of the input
@@ -584,6 +610,7 @@ Linux Commands:
 			Out put the last part of the input 
 			-c bytes	--> Output the last byte bytes
 			-n K		--> Output the last K lines
+			-f 			--> Output appended data as the file grows
 			
 		sed command:
 			Stream editor
@@ -609,9 +636,14 @@ Linux Commands:
 			-x	--> Fill columns before rows
 		
 		paste command:
-			Merge line of files
+			Merge line of files(first line to first line)
 			-d	--> Set delimiters			
 			-s	--> 
+			
+		join command:
+			Join lines of two files
+			Work on sorted files
+			
 		
 		tac command:
 			Reverse the input
@@ -621,6 +653,21 @@ Linux Commands:
 		tee command:
 			Read from standard input and write on standard output
 			-a	--> Append
+			
+		od command:
+			Dump file in octal and other formats
+			-A RADIX		--> Output format for file offsets.  RADIX is one of [doxn], for Decimal, Octal, Hex or None 
+			-t format		--> Select output format or formats
+				format :
+					-a		--> Only named chars
+					-c		--> ASCII Chars and space chars
+					
+		split command:
+			Split a file into pieces
+			-l num			--> Split each #num lines
+			-b size			--> Split as size, each output have #size size
+			-d 				--> Save outputs with digits not aa, ab, ac
+			
 			
 	Expansion :
 		printf command:
