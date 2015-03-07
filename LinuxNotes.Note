@@ -1263,6 +1263,8 @@ Linux Commands:
 			-o format	--> Customize the format
 				e.g. -o pid=,cmd
 			-l 			--> Show in long format 
+			--sort		--> Sort
+				+comm, -sid	--> Ascending command and descending sid
 			
 		pgrep command:
 			Look for the processes (grep in processes)
@@ -1270,14 +1272,14 @@ Linux Commands:
 									 			
 		kill command:
 			Killing a process
-			kill %n 			--> Kill the nth program
+			kill %n 			--> Kill the nth program, nth from jobs
 			kill ID 			--> Kill process by PID
 			kill -l 			--> The variety of signals to process
 			kill -SIGNAL PID 	--> Kill the process with that signal
 			
 				Some signals:
-					0. #0	Success	--> Program exit with no error
-					1. #1 	SIGHUP 	--> Hangup signal; Send to process running in terminal when you close the terminal
+					00. #0	Success	--> Program exit with no error
+					01. #1 	SIGHUP 	--> Hangup signal; Send to process running in terminal when you close the terminal
 					02. #2 	SIGINT 	--> Interrupt signal; When ctrl+c is pressed
 					03. #15 SIGTERM --> Termination signal; The default kill signal if no signal specified
 					04. #9 	SIGKILL --> Kill signal; Immediate termination of program by kernel, Program can't listen
@@ -1285,7 +1287,7 @@ Linux Commands:
 					06. #18 SIGCONT	--> Continue process if stopped		
 					07. #3	SIGQUIT	--> Quit from keyboard
 					08. #4	SIGILL	--> Terminate the process and dump the core
-					09. #6	SIGABRT	--> Abort signal
+					09. #6	SIGABRT	--> Abort signal, force close
 					10. #8	SIGFBE	--> Floating point exception
 					11. #20	SIGSTP	--> Stop type at tty(CTRL + Z)						
 			
@@ -1302,10 +1304,14 @@ Linux Commands:
 		
 		bg command:
 			Resume the background processes
-			bg num	--> Restart the program with num pid
+			bg %num	--> Restart the program with num pid
 			
 		fg command:
 			Place job in foreground
+			fg %num	--> Put command #num in foreground
+			
+		nohup command:
+			Run a command immune to hangups, with output to a non-tty, The command stays after logouts
 		
 		fork command:	
 			Create a new process by duplicating the calling process
@@ -1320,7 +1326,9 @@ Linux Commands:
 			Cause normal process termination
 			
 		top command:	
-			Show CPU Usage			
+			Show CPU Usage	
+			c		--> Command
+			k		--> Kill		
 											
 	
 	User management:
@@ -1391,7 +1399,8 @@ Linux Commands:
 			Display the amount of free and used memory in system
 			-m 	--> In mega
 			-k	--> In kilo
-			-b	--> In byte			
+			-b	--> In byte
+			-g	--> In gig			
 		
 		iotop command:
 			For disk usage
