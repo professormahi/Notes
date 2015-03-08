@@ -22,10 +22,22 @@ Linux Commands:
 		7. ps $$ 	--> See open shells
 		8. Regex (Regular expression)
 			e.g.
-				[Aa]	--> A or a
-				[a-z]	--> a to z
-				
-		
+				[Aa]			--> A or a
+				[a-z]			--> a to z
+				a+				--> More than one 1 a
+				a*				--> Zero or more a
+				a?				--> Zero or one repeats
+				a{min, max}		--> Between min and max repeats
+				(a|b|c)			--> a or b or c
+				.				--> Any char, except null
+				[: :]
+					[:alnum:]	--> Alphanumeric
+					[:blank:]	--> Space and tabs
+					[:digit:]	--> Digits
+					[:upper:]	--> Upper
+				^				--> At the first
+				$				--> At the end
+					
 		Shortcuts :
 			CTRL + L --> Clear
 			CTRL + R --> Search history commands			
@@ -605,13 +617,24 @@ Linux Commands:
 			
 		grep command:
 			Find pattern of chars in the input
-			-i	--> Ignore case
+			-i	--> Ignore case, Case insensetive
 			-c 	--> Give the count instead of all
 			-o 	--> Only matching
 			-P	--> Using Perl Regex
-			-v	--> Invert the result
+			-v	--> Invert the result, Where the Regex didn't match
 			-q	--> Silent, Don't show the output
 				The same as grep sth|wc -l
+			-l	--> Show only files that matched Regex
+			-E	--> Don't need scape chars
+			-F	--> The exact string
+			
+		egrep command:
+			Same as grep -E
+			
+		fgrep command:
+			Fixed grep, grep -F
+			Search the exact string
+			
 				
 		cut command:
 			Remove sections from each line or file
@@ -666,8 +689,14 @@ Linux Commands:
 			
 		sed command:
 			Stream editor
-			-n			--> Silent
+			-n			--> Suppress output
 			-e script	--> Add a script to execute
+			-r			--> Accept advanced Regexs
+			
+			commands:
+				s/find/replace/		--> Replace replace to find :D
+				/find/p				--> Print result of find find
+				
 			
 			
 		awk command:
@@ -1329,6 +1358,17 @@ Linux Commands:
 			Show CPU Usage	
 			c		--> Command
 			k		--> Kill		
+			
+			Columns:
+				NI	--> Nice, How nice the process is, -20 to 19, when a process is -20 it need more cpu and it's more important
+				
+		nice command:
+			Manage nice of commands, default 10		
+			-n 		--> Set nice to n
+			
+		renice command:
+			Change nice of commands
+			
 											
 	
 	User management:
