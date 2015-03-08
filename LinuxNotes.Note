@@ -695,7 +695,7 @@ Linux Commands:
 			
 			commands:
 				s/find/replace/		--> Replace replace to find :D
-				/find/p				--> Print result of find find
+				/find/p				--> Print result of find find, Usually use with -n
 				
 			
 			
@@ -1122,19 +1122,72 @@ Linux Commands:
 				System logs
 
 		Shell editors :
-			vi / vim command:
-				Shortcuts :
+			vi/vim command: (vi command)
+				Switching modes:
 					ESC 			--> Go to the command mode
-					ESC then I 		--> Go to edit mode
-					:w				--> Write out/Save
-					:q				--> Exit
-					:q!				--> Exit without saving
-					:wq
-					:x				--> Save & exit
-					:<line num> 	--> Jump to the line num
-					/WordToSearch	--> Search that word
-					g				--> Go to the start of file
-					shift + g		--> Go to the end
+					i		 		--> Go to edit mode
+					a				--> Enter insert mode after the current position of the cursor
+				
+				Command mode:
+					: based command:
+						:w				--> Write out/Save
+						:w!				--> Write the file whether modified of not
+						:w	filename	--> Write with filename new name
+						:q				--> Exit
+						:q!				--> Exit without saving
+						:wq
+						:x				--> Save & exit
+						:<line num> 	--> Jump to the line num
+						:e!				--> Reload file from disk
+						:e				--> Reload file from disk
+						:! command		--> Execute a command in bash
+						:help			--> Help for vi/vim
+						
+					Moving keys:
+						h				--> Left
+						j				--> Bottom
+						k				--> Up
+						l				--> Right						
+						w				--> Next word
+						e				--> End of next word
+						b				--> Beginning of last word
+						ctrl+f			--> Scroll forward a page
+						ctrl+d			--> Scroll backward a page
+						g				--> Go to the start of file
+						shift+g(G)		--> Go to the end
+						num+G			--> Go to line #num; e.g. 5G goes to line #5
+						num+H			--> Go to line #num from top of screen;e.g. 3H
+						num+L			--> Go to line #num latest line in screen
+						
+						Note:
+							You can use num+command to use command #num times
+							e.g.;
+								3w		--> Next 3 words
+						
+					Editing text:		
+						x				--> Delete a char after
+						X				--> Delete a char before
+						r				--> Replace only one character
+						u				--> undo
+						o				--> Open a new line below and goto insert mode
+						O				--> Open a new line above and goto insert mode
+						c				--> Clear until somewhere and go to insert mode
+							cw(till next word), c$(till end of line), ...
+						d				--> Delete
+							dd(Current line), dw(Current word), d$(Till end of line), d^(Till beginning of line)
+						p				--> Paste the last deleted text after cursor
+						P				--> Paste the last deleted text before cursor
+						xp				--> Swaps the character at the current position of cursor with one on its right
+						
+					Searching:
+						/WordToSearch	--> Search that word
+						?WordToSearch	--> Search that word backward
+						n				--> Find next forward/backward resault
+						
+					Others:
+						ZZ					--> Exit and save file if modified
+					
+					
 					
 		Run a Script :
 			Change the permission and ./script	--> 
@@ -1740,7 +1793,8 @@ Linux Commands:
 				All .repo files are here
 				
 			/etc/yum.conf:
-				Yum configure file
+				Yum configure file			
+			
 			
 	Other useful commands :					
 		bash command:
