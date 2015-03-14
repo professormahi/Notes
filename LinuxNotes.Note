@@ -1466,18 +1466,47 @@ Linux Commands:
 				
 	
 	Disk management commands:
+		All partition formats:
+			ext2
+			ext3		--> ext2 + journaling
+			ReiserFS	--> B-tree based, don't support SELinux
+			XFS			--> For Macs, great for uninterpretable power supplies
+			swap
+			vfat		--> Fat32, no journaling, don't understand links and permissions
+			ext4
+	
 		df command:
 			Show system disk usage
 			-l 	--> Show the list
 			-H	--> Show the list of disk usage
 		
 		fdisk command:
-			-l	--> Give the list of all disks
+			-l	--> Give the list of all disks		
+			
+		mkfs command:
+			Make file system
+			-t type		--> Set type
+			-L name		--> Set label
+			
+		mkswap command:
+			Make a partition swap
+			
+		gdisk command:
+			Change GPT, Very similar to fdisk
+			
+		Result:
+			Id	--> Type of partition
+			
 			
 			commands:
-				p	--> print
-				m	--> help
-				q	--> quit
+				p	--> Print
+				m	--> Help
+				q	--> Quit
+				l	--> List of partition types
+				a	--> Make boot flag
+				n	--> Add new partition
+				w	--> Write commands
+				v	--> Verify
 			
 		parted command:
 			Partition management 
@@ -1793,7 +1822,10 @@ Linux Commands:
 				All .repo files are here
 				
 			/etc/yum.conf:
-				Yum configure file			
+				Yum configure file
+				
+
+					
 			
 			
 	Other useful commands :					
