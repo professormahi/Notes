@@ -304,10 +304,6 @@ Linux Commands:
 				.inputrc :
 					Individual readline initialization file
 				
-	du command:
-		Summarize disk usage of each file
-		-s --> Summarize, Display only total for each argument
-		-a --> Count for all files not dirs
 		-h --> Human readable
 			
 	ln command:
@@ -1478,7 +1474,19 @@ Linux Commands:
 		df command:
 			Show system disk usage
 			-l 	--> Show the list
-			-H	--> Show the list of disk usage
+			-H	--> Human readable (each K is 1024)
+			-h	--> Human readable (K is 1000)
+			-T	--> Show types
+			-i	--> Show indoes
+			
+		du command:
+			Summarize disk usage of each file
+			-s 			--> Summarize, Display only total for each argument
+			-a 			--> Count for all files not dirs
+			-H			--> Human readable
+			-h			--> Human readable
+			-c			--> Show grant total
+			--max-dept	--> Show in maximum dept(but compute others)
 		
 		fdisk command:
 			-l	--> Give the list of all disks		
@@ -1530,6 +1538,37 @@ Linux Commands:
 		iostat command:
 			Stats for input and outputs
 			
+		Maintain the integrity of file systems:
+			fsck command:
+				Check file systems
+				-A			--> Check all file systems
+				LABEL=lbl	--> For mentioning the label
+				UUID=uuid	--> Mention the uuid
+				-N			--> Show the command that will be done
+				-n			--> -N with more infos
+				
+			xfs_check comamnd:
+				for xfs
+				
+			tune2fs command:
+				-l			--> Informations
+				
+			xfs_info command:
+				For xfs system
+			
+			debugfs command:
+				Debug file systems
+				-w			--> Write mode
+				pwd			--> Show the inode
+				stat		--> Show the status of a file
+				ncheck		--> Check nodes
+				q			--> Quit
+				
+			mke2fs command:
+				-n			--> Show superblocks infos
+				
+			dumpe2fs command:
+				Dump data of superblocks
 	
 	Network management commands:
 		netstat command:
