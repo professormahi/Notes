@@ -496,6 +496,9 @@ Linux Commands:
 		whereis command:
 			To determine the exact location of the given exe, man, etc
 			
+		whatis command:
+			Show that what is the command
+		
 		
 		help command:
 			Give help for a command 
@@ -535,8 +538,7 @@ Linux Commands:
 			
 		info command: 
 			Give information about program
-			info <program>
-			
+			info <program>						
 			
 		
 	I/O redirection:
@@ -770,21 +772,26 @@ Linux Commands:
 				
 				
 	Account management (Permissions management) :
-		ls permissions Result:
+		ls permissions Result:(ls command)
 			-rwxrwxrwx : (owner, group, other)
-				The only  - --> "-" For file and "d" for dirs
-				First 	rwx	--> Read, write, and execute for the file owner
-				Second 	rwx	--> Read, write, and execute for the group owner of file
-				Third 	rwx --> Read, write, and execute for all users
+				The only  - --> "-" For file, "d" for dirs, "b" for block devices, "l" for symbolic links, and ...
+				First 	rwx		--> Read, write, and execute for the file owner
+				Second 	rwx		--> Read, write, and execute for the group owner of file
+				Third 	rwx 	--> Read, write, and execute for all users
+				The last bit	--> On some permission, "t" means just owner can remove file
 				
 		chmod command:
 			Change the permissions
 			In octal :
-				rwx --> 7
-				rw- --> 6
-				r-x --> 5
-				r-- --> 4
-				--- --> 0				
+				rwx 	--> 7
+				rw- 	--> 6
+				r-x 	--> 5
+				r-- 	--> 4
+				--- 	--> 0	
+				suid	--> 4..., u+s
+				guid	--> 2..., g+s
+				sticky	--> 1..., o+t
+							
 			=	--> Override the permission
 			+	--> Add a permission
 			- 	--> Remove a permission			
@@ -796,6 +803,10 @@ Linux Commands:
 			w  	--> Write permission						
 			x for dirs :
 				Allow to be entered (SMILE)
+			s	--> SUID permission
+			
+		umask command:
+			Set what permissions are blocked on files
 			
 		su command:
 			Make the current user super user
@@ -814,6 +825,9 @@ Linux Commands:
 		chgrp command:
 			Change the group owner
 			chgrp <new group> file --> Change the owner group to the new one
+			
+		newgrp command:
+			Change default group
 			
 		access command:
 			Check real user permission for file
@@ -1276,13 +1290,7 @@ Linux Commands:
 			-a	--> All
 			-s	--> Kernel name
 			-n	--> Node name or Host name
-			-m	--> Machine hardware CPU name, x86 or x64
-			
-		who command:
-			Show who has logged on
-			
-		whoami command:
-			Show who are you ;)
+			-m	--> Machine hardware CPU name, x86 or x64					
 			
 	Hardware management commands:
 		lsof command:
@@ -1435,6 +1443,18 @@ Linux Commands:
 			
 		w command:
 			Show who is logged on and what they do
+			
+		who command:
+			Show who has logged on
+			
+		whoami command:
+			Show who are you ;)
+			
+		groups command:
+			Groups that current user is in
+		
+		id command:
+			All ids of current user and his groups
 			
 	Console management :
 		tty command:
