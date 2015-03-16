@@ -1175,6 +1175,8 @@ Linux Commands:
 						p				--> Paste the last deleted text after cursor
 						P				--> Paste the last deleted text before cursor
 						xp				--> Swaps the character at the current position of cursor with one on its right
+						y				--> Copy
+							yy(current line), yw(current word), ...
 						
 					Searching:
 						/WordToSearch	--> Search that word
@@ -1592,6 +1594,41 @@ Linux Commands:
 			swapoff command:
 				-a		--> All
 
+		Disk quota management:
+			in fstab options
+				usrquota, uqouta, grpquota, gqouta
+			
+			quotaon command:
+				Turn quota on
+			
+			quotaoff command:
+				Turn quota off
+			
+			quotacheck command:
+				-a		--> All
+				-u		--> Users
+				-m		--> Mounted will check too
+				-v		--> Verbose
+				
+			edquota command:
+				-u user	--> Edit for user "user"
+				-g grp	--> Group quota editing
+				-p 		--> Copy some quota rules to others
+				
+			quota command:
+				Show qoutas
+				usage :
+					quota foo	--> Quota data for foo user
+				
+			repquota command:
+				Report quota infos
+				-u		--> User mode
+				-g		--> Group mode
+				-a		--> All
+				
+			warnquota command:
+				Send mail to all users that are on red line
+	
 	
 	Network management commands:
 		netstat command:
