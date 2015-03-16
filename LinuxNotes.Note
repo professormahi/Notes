@@ -161,8 +161,9 @@ Linux Commands:
 						Same as shadow but for groups
 						
 					/etc/fstab :
-						Mounted Devices
-						
+						Mounted Devices are stored here, Format is in the comments
+						Options are in "mount command"
+												
 					/etc/hosts :
 						Net host names & IP addresses
 						
@@ -1310,7 +1311,7 @@ Linux Commands:
 			Each hardware has an ID
 		
 		blkid command:
-			List all block devices (Hard disk) IDs
+			List all block devices (Hard disk) IDs, UUID
 			
 	Job control : (Process management commands)
 		Notes :
@@ -1530,7 +1531,7 @@ Linux Commands:
 			-m 	--> In mega
 			-k	--> In kilo
 			-b	--> In byte
-			-g	--> In gig			
+			-g	--> In gig								
 		
 		iotop command:
 			For disk usage
@@ -1569,6 +1570,28 @@ Linux Commands:
 				
 			dumpe2fs command:
 				Dump data of superblocks
+				
+		Mounting and unmounting:
+			mount command:
+				usage:
+					mount device somewhere
+				-t type		--> Set type
+				-o			--> Set options
+					remount, ro(readonly)/rw, defaults, noauto, user(user can mount it), exec/noexec, noatime(disable recording of access time)
+					Options are separated with comma
+			
+			umount command:
+				usage:
+					umount device or umount somewhere
+					
+		Swap manager:
+			swapon command:
+				Turn on swap
+				-a		--> All
+				
+			swapoff command:
+				-a		--> All
+
 	
 	Network management commands:
 		netstat command:
