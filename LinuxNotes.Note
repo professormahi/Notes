@@ -70,6 +70,7 @@ Linux Commands:
 				-R			--> Recursive
 				--color=	--> To classify by colors(e.g. --color=auto)
 				-1			--> Show files in 1 column
+				-i			--> Show inodes
 			
 			Result of ls -l :
 				Permission
@@ -309,9 +310,12 @@ Linux Commands:
 			
 	ln command:
 		Making a symbolic link 
-		ln -T target <link name>
-		ln -s target <link name>	--> Make symbolic link not hard one
+		ln -T target <link name>	--> Treat LINK_NAME as a normal file always
+		ln -s target <link name>	--> Make symbolic link not hard one, inodes are not same
+		ln target <link name>		--> Make hard link, inodes are same
 		
+	unlink command:
+		Remove a link
 		
 	find command:
 		Search for files in a directory
@@ -696,7 +700,9 @@ Linux Commands:
 				s/find/replace/		--> Replace replace to find :D
 				/find/p				--> Print result of find find, Usually use with -n
 				
-			
+		fold command:
+			Wrap input
+			-w			--> Set witdh
 			
 		awk command:
 			A programing lang for constructing filters
