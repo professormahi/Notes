@@ -288,7 +288,7 @@ Linux Commands:
 			/media & /mnt :
 				Use for mount points
 				/media		--> Removable medias
-				/mnt		--> File systems
+				/mnt		--> File systems, Temporaries 
 
 			/sys:
 				All hardware abstracted details
@@ -341,6 +341,9 @@ Linux Commands:
 		-type			--> Just find files with specific type; e.g. -type d(directory), l(link), f(file)
 		-ls				--> ls result of find
 		-print 			--> Print full name if the files on each line
+		-maxdept		--> How much go deeper
+		!				--> Not result
+			! -user foo; the user is not foo
 		-exec			--> Execute a command on resault
 			files are {}
 			e.g.
@@ -348,7 +351,13 @@ Linux Commands:
 		
 		
 	locate command:
-		find files by name
+		find files by name, faster than find command
+		-S				--> Show the db status
+		
+	updatedb command:
+		Update database of files
+		Config files:
+			/etc/updatedb.conf
 						
 	wc command: 
 		Print newline, word, count, and byte count for each file
@@ -370,7 +379,7 @@ Linux Commands:
 		PPID		--> Process id of parent
 		?			--> The last process execution code
 		RANDOM		--> A random number
-		PATH		--> Path of all binaries
+		PATH		--> Path of all binaries, where binaries stored
 		
 	printenv command:
 		List of the environment parameters
@@ -488,22 +497,23 @@ Linux Commands:
 			5- Files
 				e.g. /bin/date
 		
-		type command:
-			Print the command types
-				using : type <command>
-			-p --> Just address			
 				
 		which command:
 			To determine the exact location of the given exe
-				using : which <command>
+				using : which <command>				
+			-a	--> Search all path for binary and returns all matchings
+			
+		type command:
+			Print the command types, Completer than type
+				using : type <command>
+			-p --> Just address
 		
 		whereis command:
-			To determine the exact location of the given exe, man, etc
+			To determine the exact location of the given exe, man, source code, etc
 			
 		whatis command:
 			Show that what is the command
-		
-		
+				
 		help command:
 			Give help for a command 
 			
@@ -1518,7 +1528,18 @@ Linux Commands:
 			--max-dept	--> Show in maximum dept(but compute others)
 		
 		fdisk command:
-			-l	--> Give the list of all disks		
+			-l	--> Give the list of all disks	
+			Result:
+				Id	--> Type of partition			
+			commands:
+				p	--> Print
+				m	--> Help
+				q	--> Quit
+				l	--> List of partition types
+				a	--> Make boot flag
+				n	--> Add new partition
+				w	--> Write commands
+				v	--> Verify	
 			
 		mkfs command:
 			Make file system
@@ -1531,20 +1552,7 @@ Linux Commands:
 		gdisk command:
 			Change GPT, Very similar to fdisk
 			
-		Result:
-			Id	--> Type of partition
-			
-			
-			commands:
-				p	--> Print
-				m	--> Help
-				q	--> Quit
-				l	--> List of partition types
-				a	--> Make boot flag
-				n	--> Add new partition
-				w	--> Write commands
-				v	--> Verify
-			
+												
 		parted command:
 			Partition management 
 			
