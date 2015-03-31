@@ -757,6 +757,7 @@ Linux Commands:
 				format :
 					-a		--> Only named chars
 					-c		--> ASCII Chars and space chars
+					-x1		--> Hex
 					
 		split command:
 			Split a file into pieces
