@@ -1340,6 +1340,9 @@ Linux Commands:
 		blkid command:
 			List all block devices (Hard disk) IDs, UUID
 			
+		lsblk command:
+			List of block devices
+			
 	Job control : (Process management commands)
 		Notes :
 			1. Put a program on background --> program &			
