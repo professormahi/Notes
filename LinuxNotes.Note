@@ -721,10 +721,15 @@ Linux Commands:
 			-F fieldSeparator	--> Set the field separator; If is other than tab or space such as ,
 			-f AwkCommand		--> Read the awk command file and do that (SMILE)
 			
+			Variables:
+				NF means number of fields
+				NR means number of rows				
+				FS 	--> Input field separator
+				OFS	--> Output field separator
+				RS	--> Line separator(Change if line means any thing in your data)
+			
 			Notes :
 				If you set a condition in front of a block({}) the block will execute only if the condition was true
-				NF means number of fields
-				NR means number of rows
 			
 		column command:
 			To reformat the list as columned
