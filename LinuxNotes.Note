@@ -730,7 +730,33 @@ Linux Commands:
 			
 			Notes :
 				If you set a condition in front of a block({}) the block will execute only if the condition was true
+		
+		
+		diff command:
+			To check difference between to files
+			Usage;
+				diff [options] file1 file2
+			Output:
+				Line numbers is for first file
+				Characters: 
+					a		--> add
+					c		--> change
+					d		--> delete
+				Line numbers of second file
 			
+				>		--> First file
+				<		--> Second file
+		
+			-c			--> Context mode
+				output; +(sec that must add to first), -(must remove from first), !(group must change)
+			-y 			--> Display output in two columns	
+			-b			--> Ignore whitespace changes
+			-w			--> Ignore whitespaces totally
+			-B			--> Ignore blank lines
+			-s			--> Report if files are same
+			
+			
+				
 		column command:
 			To reformat the list as columned
 			-t 	--> Determine the input and make it table
