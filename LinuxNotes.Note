@@ -669,6 +669,13 @@ Linux Commands:
 			Examples :
 				tr '[:upper:]' '[:lower:]'
 				
+		shuf command:
+			Make a shuffle of input
+			-e			--> echo
+			-i LO_HI	--> Input range from LO-HI
+			-o			--> Output
+			-n			--> Output lines count
+				
 		expand command:
 			Convert tabs to spaces
 			
