@@ -474,7 +474,7 @@ Linux Commands:
 			Secure copy, Remote copy
 			
 		dd command:
-			Convert and copy a file
+			Convert and copy a file (best to create ISO image files)
 			if=input	--> Mention input
 			of=output	--> Mention output
 			bs=size		--> Block size
@@ -543,7 +543,7 @@ Linux Commands:
 	 			9. Kernel routines[Non standard]
 	 			
 	 		-f						--> Search for string in titles of commands
-	 		-k						--> Search more, in the infos too
+	 		-k						--> Search more, in the infos too, like aprpos and whatis command
 	 		
 	 	apropos command:
 	 		Search for input in commands
@@ -698,13 +698,13 @@ Linux Commands:
 			
 		head command: 
 			Out put the first part of the input
-			-n Count --> Output the first count lines
+			-n Count --> Output the first count lines (default is 10)
 			-c c	 --> Output the first k bytes
 		
 		tail command: 
 			Out put the last part of the input 
 			-c bytes	--> Output the last byte bytes
-			-n K		--> Output the last K lines
+			-n K		--> Output the last K lines (default is 10)
 			-f 			--> Output appended data as the file grows
 			
 		sed command:
@@ -1361,7 +1361,7 @@ Linux Commands:
 			List all hardwares that are connected
 		
 		lsmod command:
-			All modules that are loaded by Kernel
+			Show all modules that are loaded by Kernel
 		
 		rmmod command:
 			Remove a module
@@ -1573,7 +1573,7 @@ Linux Commands:
 			-l	--> Give the list of all disks	
 			Result:
 				Id	--> Type of partition			
-			commands:
+			commands: (Interactive shell)
 				p	--> Print
 				m	--> Help
 				q	--> Quit
@@ -1585,8 +1585,12 @@ Linux Commands:
 			
 		mkfs command:
 			Make file system
-			-t type		--> Set type
+			-t type		--> Set type (ext2, ext3, etc), Can use mkfs.ext2, etc instead
 			-L name		--> Set label
+			
+		mk2fs command:
+			Make file system
+			-j			--> Add journaling
 			
 		mkswap command:
 			Make a partition swap
@@ -1625,6 +1629,7 @@ Linux Commands:
 				UUID=uuid	--> Mention the uuid
 				-N			--> Show the command that will be done
 				-n			--> -N with more infos
+				-p			--> Automatically attempt repair to all errors
 				
 			xfs_check comamnd:
 				for xfs
@@ -1655,7 +1660,7 @@ Linux Commands:
 					mount device somewhere
 				-t type		--> Set type
 				-o			--> Set options
-					remount, ro(readonly)/rw, defaults, noauto, user(user can mount it), exec/noexec, noatime(disable recording of access time)
+					remount, ro(readonly)/rw, defaults, noauto, user(user can mount it), exec/noexec, noatime(disable recording of access time), loop(for cd/dvds)
 					Options are separated with comma
 			
 			umount command:
@@ -2014,5 +2019,6 @@ Linux Commands:
 			-max-args num	--> Each time uses max #num arguments
 			-L num			--> Each #num lines is an arguments
 			-I INPUT		--> Replace INPUT with input
+			-0				--> Input will terminate by null
 			e.g.
 				ls | xargs echo files:		--> will echo "files: all files in ls"
