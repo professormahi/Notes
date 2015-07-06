@@ -479,6 +479,9 @@ Linux Commands:
 			of=output	--> Mention output
 			bs=size		--> Block size
 			count=1		--> How many files to make
+			seek		--> Where to write
+			conv		--> Convert the file as per the comma separated symbol list
+				conv=notrunc(don't truncate the output file), ...
 			
 		patch command:
 			Apply a diff file to an original one
@@ -796,6 +799,20 @@ Linux Commands:
 					-a		--> Only named chars
 					-c		--> ASCII Chars and space chars
 					-x1		--> Hex
+					
+		hexdump command:
+			Show binary in hex format
+			-C 				--> Show in hex and ASCII mode
+			
+		objdump command:
+			Display information from object files(best options -S -l -C -F -W -t)
+			-S				--> Give the assembly code
+			-l				--> Show line numbers
+			-C				--> Demangle, Decode low-level symbol names into user-level names
+			-F				--> Show file offsets
+			-W				--> Display contents of the debug sections in the file
+			-t				--> Print the symbol table entries of the file
+			
 					
 		split command:
 			Split a file into pieces
@@ -1857,6 +1874,14 @@ Linux Commands:
 			
 			aria2c command:
 				Download manager
+				
+	Hash, Encryption And Decryption tools:
+		md5sum command:
+			Create a md5 string for each file
+		
+		base64 command:
+			Decode and encode base64 
+			-d		--> Decode
 				
 	Boot management:
 		dmesg command:
