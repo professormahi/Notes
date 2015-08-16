@@ -658,6 +658,7 @@ Linux Commands:
 			-c=chars	--> Select only this chars
 			-c n		--> Select nth char
 			-f n		--> Select filed #n
+			-b x-y			--> Select bytes x to z
 			
 				
 		tr command:
@@ -784,7 +785,7 @@ Linux Commands:
 		
 		tac command:
 			Reverse the input
-			-r 			--> Set regex
+			-r 			    --> Set regex
 			-s separator	--> Set the separator
 			
 		tee command:
