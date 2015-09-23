@@ -619,6 +619,7 @@ Linux Commands:
 			-r 		--> reverse	
 			-k KEY	--> Will sort via key, It'll shows the location and type
 			-b 		--> Ignore leading blanks
+			-f		--> Ignore case
 			
 			
 		
