@@ -41,6 +41,26 @@ Linux Commands:
 		Shortcuts :
 			CTRL + L --> Clear
 			CTRL + R --> Search history commands			
+			CTRL + F --> Character forward
+			CTRL + B --> Character backward
+			ALT  + F --> Word forward
+			ALT  + B --> Word backward
+			
+			CTRL + D --> Delete current
+			CTRL + T --> Transpose characters
+			ALT  + T --> Transpose words
+			ALT  + U --> Uppercase words
+			ALT  + L --> Lowercase words
+			ALT  + C --> Capitalize words
+			CTRL + V --> Insert special characters
+			
+			CTRL + K --> Cut end of file
+			CTRL + U --> Cut beginning of file
+			CTRL + W --> Cut previous word
+			ALT  + D --> Cut next word
+			CTRL + Y --> Paste recent text
+			ALT  + Y --> Paster earlier text
+			CTRL + C --> Delete whole line
 	
 	history command:
 		list history of my commands
@@ -619,7 +639,7 @@ Linux Commands:
 			-r 		--> reverse	
 			-k KEY	--> Will sort via key, It'll shows the location and type
 			-b 		--> Ignore leading blanks
-			-f		--> Ignore case
+			-f		--> Ignore case	
 			
 			
 		
