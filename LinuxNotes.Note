@@ -1353,7 +1353,8 @@ Linux Commands:
 	
 		id command:
 			Give the Current User
-			-u --> Print only the effective user ID (If Equal zero is super user)
+			-u 			--> Print only the effective user ID (If Equal zero is super user)
+			id username	--> Show just ids for the current user		
 			
 		uname command:
 			Print system info
