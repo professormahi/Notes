@@ -1522,6 +1522,9 @@ Linux Commands:
 			
 		who command:
 			Show who has logged on
+		
+		who am i command:
+			Show who are you and where are you on :D
 			
 		whoami command:
 			Show who are you ;)
