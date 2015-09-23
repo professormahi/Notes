@@ -1523,6 +1523,8 @@ Linux Commands:
 			
 		who command:
 			Show who has logged on
+			-u	--> List users 
+			-H	--> Print line of column headings
 		
 		who am i command:
 			Show who are you and where are you on :D
