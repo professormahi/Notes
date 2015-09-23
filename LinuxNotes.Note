@@ -40,7 +40,8 @@ Linux Commands:
 					
 		Shortcuts :
 			CTRL + L --> Clear
-			CTRL + R --> Search history commands			
+			CTRL + R --> Search history commands	
+			CTRL + S --> Forward incremental search		
 			CTRL + F --> Character forward
 			CTRL + B --> Character backward
 			ALT  + F --> Word forward
