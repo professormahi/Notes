@@ -1367,6 +1367,7 @@ Linux Commands:
 			--packet-trace		--> Show all the packets
 			--iflist			--> Show interfaces list and routes
 			-p port				--> Nmap a specific port
+			-T<0-5>				--> Set timing template (higher is faster)
 			
 			
 	System Info :			
